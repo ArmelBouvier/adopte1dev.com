@@ -4,7 +4,26 @@
 {% block page_title 'Administration du site' %}
 
 {% block page_content %}
-    <p>
-        <strong>Admin</strong>
-    </p>   
+	<div class="container">
+		<div class="row justify-content-around">
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title"><span class="text-info display-3">{{countAllUsers['value']}}</span> Utilisateurs</h5>
+				</div>
+			</div>
+
+            <div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title"><span class="text-info display-3">{{countAllJobs['value']}}</span> Jobs</h5>
+				</div>
+			</div>
+
+            <div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title"><span class="text-info display-3">{{countAllCompanies['value']}}</span> Entreprises</h5>
+				</div>
+			</div>
+		</div>
+
+	</div>
 {% endblock %}

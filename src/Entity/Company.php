@@ -50,7 +50,7 @@ class Company
     private $description;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default"= "CURRENT_TIMESTAMP"})
      */
     private $created_at;
 
@@ -66,8 +66,14 @@ class Company
 
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
         $this->socialMedia = new ArrayCollection();
         $this->jobs = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -181,8 +187,8 @@ class Company
     {
         if ($this->socialMedia->removeElement($socialMedium)) {
             // set the owning side to null (unless already changed)
-            if ($socialMedium->getCompanyId() === $this) {
-                $socialMedium->setCompanyId(null);
+            if ($socialMedium->getCompany() === $this) {
+                $socialMedium->setCompany(null);
             }
         }
 

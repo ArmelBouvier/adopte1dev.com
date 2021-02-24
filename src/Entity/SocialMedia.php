@@ -35,7 +35,7 @@ class SocialMedia
     /**
      * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="socialMedia")
      */
-    private $company_id;
+    private $company;
 
     public function getId(): ?int
     {
@@ -78,14 +78,14 @@ class SocialMedia
         return $this;
     }
 
-    public function getCompanyId(): ?Company
+    public function getCompany(): ?Company
     {
-        return $this->company_id;
+        return $this->company;
     }
 
-    public function setCompanyId(?Company $company_id): self
+    public function setCompany(?Company $company): self
     {
-        $this->company_id = $company_id;
+        $this->company = $company;
 
         return $this;
     }
