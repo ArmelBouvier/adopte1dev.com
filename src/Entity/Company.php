@@ -64,6 +64,46 @@ class Company
      */
     private $jobs;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $slogan;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $frenchOffice;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $remoteHiring;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $workForce;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $keyWords = [];
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $perks = [];
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $logo;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $banner;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -221,6 +261,102 @@ class Company
                 $job->setCompanyId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlogan(): ?string
+    {
+        return $this->slogan;
+    }
+
+    public function setSlogan(?string $slogan): self
+    {
+        $this->slogan = $slogan;
+
+        return $this;
+    }
+
+    public function getFrenchOffice(): ?string
+    {
+        return $this->frenchOffice;
+    }
+
+    public function setFrenchOffice(?string $frenchOffice): self
+    {
+        $this->frenchOffice = $frenchOffice;
+
+        return $this;
+    }
+
+    public function getRemoteHiring(): ?string
+    {
+        return $this->remoteHiring;
+    }
+
+    public function setRemoteHiring(?string $remoteHiring): self
+    {
+        $this->remoteHiring = $remoteHiring;
+
+        return $this;
+    }
+
+    public function getWorkForce(): ?string
+    {
+        return $this->workForce;
+    }
+
+    public function setWorkForce(?string $workForce): self
+    {
+        $this->workForce = $workForce;
+
+        return $this;
+    }
+
+    public function getKeyWords(): ?array
+    {
+        return $this->keyWords;
+    }
+
+    public function setKeyWords(?array $keyWords): self
+    {
+        $this->keyWords = $keyWords;
+
+        return $this;
+    }
+
+    public function getPerks(): ?array
+    {
+        return $this->perks;
+    }
+
+    public function setPerks(?array $perks): self
+    {
+        $this->perks = $perks;
+
+        return $this;
+    }
+
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(?string $logo): self
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    public function getBanner(): ?string
+    {
+        return $this->banner;
+    }
+
+    public function setBanner(?string $banner): self
+    {
+        $this->banner = $banner;
 
         return $this;
     }
