@@ -4,11 +4,11 @@ namespace App\Controller\Admin;
 
 use App\Entity\Company;
 use App\Entity\CompanyKeywords;
+use App\Entity\Job;
 use App\Entity\SocialMedia;
 use App\Entity\User;
 use App\Repository\CompanyRepository;
-use App\Repository\CompanyKeywordsRepository;
-use App\Repository\SocialMediaRepository;
+use App\Repository\JobRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,14 +20,18 @@ class DashboardController extends AbstractDashboardController
 {
     protected $userRepository;
     protected $companyRepository;
+    protected $jobRepository;
 
     public function __construct(
         UserRepository $userRepository,
-        CompanyRepository $companyRepository
+        CompanyRepository $companyRepository,
+        JobRepository $jobRepository
     )
+
     {
-        $this->userRepository = $userRepository;
+        $this->UserRepository = $userRepository;
         $this->CompanyRepository = $companyRepository;
+        $this->JobRepository = $jobRepository;
     }
 
     /**
@@ -36,8 +40,8 @@ class DashboardController extends AbstractDashboardController
     public function index(): Response
     {
         return $this->render('bundles/easyAdminBundle/welcome.html.twig', [
-            'countAllUsers' => $this->userRepository->countAllUsers(),
-            // 'countAllJobs' => $this->jobRepository->countAllJobs(),
+            'countAllUsers' => $this->UserRepository->countAllUsers(),
+            'countAllJobs' => $this->JobRepository->countAllJobs(),
             'countAllCompanies' => $this->CompanyRepository->countAllCompanies(),
         ]);
     }
@@ -59,6 +63,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Entreprises', 'fa fa-building', Company::class);
         yield MenuItem::linkToCrud('Réseaux sociaux', 'fa fa-at', SocialMedia::class);
         yield MenuItem::linkToCrud('Mots-clés', 'fa fa-tag', CompanyKeywords::class);
+
+        yield MenuItem::section('Offres d\'emploi');
+        yield MenuItem::linkToCrud('Offres d\'emploi', 'fa fa-laptop-code', Job::class);
 
     }
 }
