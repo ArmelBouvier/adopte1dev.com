@@ -81,15 +81,16 @@ class Company
     private $socialMedia;
 
     /**
-     * @ORM\ManyToMany(targetEntity=CompanyKeywords::class, mappedBy="company")
+     * @ORM\ManyToMany(targetEntity=CompanyKeywords::class, inversedBy="companies")
      */
-    private $companyKeywords;
+    private $keywords;
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->socialMedia = new ArrayCollection();
         $this->companyKeywords = new ArrayCollection();
+        $this->keywords = new ArrayCollection();
     }
 
     public function __toString()
@@ -267,26 +268,23 @@ class Company
     /**
      * @return Collection|CompanyKeywords[]
      */
-    public function getCompanyKeywords(): Collection
+    public function getKeywords(): Collection
     {
-        return $this->companyKeywords;
+        return $this->keywords;
     }
 
-    public function addCompanyKeyword(CompanyKeywords $companyKeyword): self
+    public function addKeyword(CompanyKeywords $keyword): self
     {
-        if (!$this->companyKeywords->contains($companyKeyword)) {
-            $this->companyKeywords[] = $companyKeyword;
-            $companyKeyword->addCompany($this);
+        if (!$this->keywords->contains($keyword)) {
+            $this->keywords[] = $keyword;
         }
 
         return $this;
     }
 
-    public function removeCompanyKeyword(CompanyKeywords $companyKeyword): self
+    public function removeKeyword(CompanyKeywords $keyword): self
     {
-        if ($this->companyKeywords->removeElement($companyKeyword)) {
-            $companyKeyword->removeCompany($this);
-        }
+        $this->keywords->removeElement($keyword);
 
         return $this;
     }

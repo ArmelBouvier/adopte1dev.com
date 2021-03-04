@@ -25,13 +25,14 @@ class CompanyKeywords
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Company::class, inversedBy="companyKeywords")
+     * @ORM\ManyToMany(targetEntity=Company::class, mappedBy="keywords")
      */
-    private $company;
+    private $companies;
 
     public function __construct()
     {
         $this->company = new ArrayCollection();
+        $this->companies = new ArrayCollection();
     }
 
     public function __toString()
@@ -59,15 +60,16 @@ class CompanyKeywords
     /**
      * @return Collection|Company[]
      */
-    public function getCompany(): Collection
+    public function getCompanies(): Collection
     {
-        return $this->company;
+        return $this->companies;
     }
 
     public function addCompany(Company $company): self
     {
-        if (!$this->company->contains($company)) {
-            $this->company[] = $company;
+        if (!$this->companies->contains($company)) {
+            $this->companies[] = $company;
+            $company->addKeyword($this);
         }
 
         return $this;
@@ -75,7 +77,9 @@ class CompanyKeywords
 
     public function removeCompany(Company $company): self
     {
-        $this->company->removeElement($company);
+        if ($this->companies->removeElement($company)) {
+            $company->removeKeyword($this);
+        }
 
         return $this;
     }

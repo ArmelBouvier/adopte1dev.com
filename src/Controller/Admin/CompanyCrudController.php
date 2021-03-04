@@ -56,8 +56,8 @@ class CompanyCrudController extends AbstractCrudController
                 '100-1000' => '100-1000', 
                 '1000+' => '1000+',
                 ])->setLabel('Effectifs de l\'entreprise')->hideOnIndex(),
-            AssociationField::new('companyKeywords')->setLabel('Mots-clés'),
-            DateTimeField::new('created_at'),
+            AssociationField::new('keywords')->setLabel('Mots-clés'),
+            DateTimeField::new('created_at')->setLabel('Créée le :'),
         ];
     }
 }
