@@ -6,10 +6,8 @@ use App\Entity\SocialMedia;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
 class SocialMediaCrudController extends AbstractCrudController
 {
@@ -22,22 +20,18 @@ class SocialMediaCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->onlyOnIndex(),
-            AssociationField::new('company'),
+            AssociationField::new('company')->setLabel('Entreprise associée'),
             ChoiceField::new('type')->setChoices([
-                'Facebook' => 'facebook', 
-                'Twitter' => 'twitter',
-                'LinkedIn' => 'linkedin',
-                'Instagram' => 'instagram',
-                'Youtube' => 'youtube',
-                'Pinterest' => 'pinterest',
-                'TikTok' => 'toktok',
-                'Twitch' => 'twitch',
-                'Dribbble' => 'dribbble',
-                'Github' => 'github',
-                'Gitlab' => 'gitlab',                
-                ]),
-            Urlfield::new('url'),
-            DateTimeField::new('createdAt'),
+                'Facebbok' => 'Facebbok', 
+                'Twitter' => 'Twitter',
+                'Linkedin' => 'Linkedin' , 
+                'Instagram' => 'Instagram',
+                'Youtube' => 'Youtube', 
+                'Pinterest' => 'Pinterest',
+                'Tiktok' => 'Tiktok ',
+                'Twitch' => 'Twitch',
+                ])->setLabel('Type de réseau social'),
+            TextField::new('url'),
         ];
     }
 }

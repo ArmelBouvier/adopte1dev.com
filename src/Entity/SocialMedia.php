@@ -28,11 +28,6 @@ class SocialMedia
     private $url;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $created_at;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="socialMedia")
      */
     private $company;
@@ -62,18 +57,6 @@ class SocialMedia
     public function setUrl(string $url): self
     {
         $this->url = $url;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->created_at;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $created_at): self
-    {
-        $this->created_at = $created_at;
 
         return $this;
     }

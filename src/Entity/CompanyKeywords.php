@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\SkillLevelRepository;
+use App\Repository\CompanyKeywordsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=SkillLevelRepository::class)
+ * @ORM\Entity(repositoryClass=CompanyKeywordsRepository::class)
  */
-class SkillLevel
+class CompanyKeywords
 {
     /**
      * @ORM\Id
@@ -25,13 +25,13 @@ class SkillLevel
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Job::class, inversedBy="skillLevels")
+     * @ORM\ManyToMany(targetEntity=Company::class, inversedBy="companyKeywords")
      */
-    private $job_id;
+    private $company;
 
     public function __construct()
     {
-        $this->job_id = new ArrayCollection();
+        $this->company = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -52,25 +52,25 @@ class SkillLevel
     }
 
     /**
-     * @return Collection|Job[]
+     * @return Collection|Company[]
      */
-    public function getJobId(): Collection
+    public function getCompany(): Collection
     {
-        return $this->job_id;
+        return $this->company;
     }
 
-    public function addJobId(Job $jobId): self
+    public function addCompany(Company $company): self
     {
-        if (!$this->job_id->contains($jobId)) {
-            $this->job_id[] = $jobId;
+        if (!$this->company->contains($company)) {
+            $this->company[] = $company;
         }
 
         return $this;
     }
 
-    public function removeJobId(Job $jobId): self
+    public function removeCompany(Company $company): self
     {
-        $this->job_id->removeElement($jobId);
+        $this->company->removeElement($company);
 
         return $this;
     }

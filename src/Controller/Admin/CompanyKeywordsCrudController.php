@@ -2,14 +2,14 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Job;
+use App\Entity\CompanyKeywords;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class JobCrudController extends AbstractCrudController
+class CompanyKeywordsCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Job::class;
+        return CompanyKeywords::class;
     }
 
     /*

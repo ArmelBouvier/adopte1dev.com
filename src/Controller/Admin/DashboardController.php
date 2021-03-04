@@ -3,11 +3,10 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Company;
-use App\Entity\Job;
 use App\Entity\SocialMedia;
 use App\Entity\User;
 use App\Repository\CompanyRepository;
-use App\Repository\JobRepository;
+use App\Repository\SocialMediaRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,17 +17,18 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 class DashboardController extends AbstractDashboardController
 {
     protected $userRepository;
-    protected $jobRepository;
+    protected $companyRepository;
+    protected $socialMediaRepository;
 
     public function __construct(
         UserRepository $userRepository,
-        JobRepository $jobRepository,
+        SocialMediaRepository $socialMediaRepository,
         CompanyRepository $companyRepository
     )
     {
         $this->userRepository = $userRepository;
-        $this->jobRepository = $jobRepository;
         $this->CompanyRepository = $companyRepository;
+        $this->SocialMediaRepository = $socialMediaRepository;
     }
 
     /**
@@ -38,7 +38,7 @@ class DashboardController extends AbstractDashboardController
     {
         return $this->render('bundles/easyAdminBundle/welcome.html.twig', [
             'countAllUsers' => $this->userRepository->countAllUsers(),
-            'countAllJobs' => $this->jobRepository->countAllJobs(),
+            // 'countAllJobs' => $this->jobRepository->countAllJobs(),
             'countAllCompanies' => $this->CompanyRepository->countAllCompanies(),
         ]);
     }
@@ -60,7 +60,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Entreprises', 'fa fa-building', Company::class);
         yield MenuItem::linkToCrud('Réseaux sociaux', 'fa fa-at', SocialMedia::class);
 
-        yield MenuItem::section('Offres d\'emploi');
-        yield MenuItem::linkToCrud('Jobs', 'fa fa-hammer', Company::class);
     }
 }

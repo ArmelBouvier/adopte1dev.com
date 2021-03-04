@@ -6,6 +6,7 @@ use App\Repository\CompanyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=CompanyRepository::class)
@@ -55,16 +56,6 @@ class Company
     private $created_at;
 
     /**
-     * @ORM\OneToMany(targetEntity=SocialMedia::class, mappedBy="company_id")
-     */
-    private $socialMedia;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Job::class, mappedBy="company_id")
-     */
-    private $jobs;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $slogan;
@@ -85,30 +76,20 @@ class Company
     private $workForce;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\OneToMany(targetEntity=SocialMedia::class, mappedBy="company")
      */
-    private $keyWords = [];
+    private $socialMedia;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\ManyToMany(targetEntity=CompanyKeywords::class, mappedBy="company")
      */
-    private $perks = [];
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $logo;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $banner;
+    private $companyKeywords;
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->socialMedia = new ArrayCollection();
-        $this->jobs = new ArrayCollection();
+        $this->companyKeywords = new ArrayCollection();
     }
 
     public function __toString()
@@ -205,66 +186,6 @@ class Company
         return $this;
     }
 
-    /**
-     * @return Collection|SocialMedia[]
-     */
-    public function getSocialMedia(): Collection
-    {
-        return $this->socialMedia;
-    }
-
-    public function addSocialMedium(SocialMedia $socialMedium): self
-    {
-        if (!$this->socialMedia->contains($socialMedium)) {
-            $this->socialMedia[] = $socialMedium;
-            $socialMedium->setCompanyId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSocialMedium(SocialMedia $socialMedium): self
-    {
-        if ($this->socialMedia->removeElement($socialMedium)) {
-            // set the owning side to null (unless already changed)
-            if ($socialMedium->getCompany() === $this) {
-                $socialMedium->setCompany(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Job[]
-     */
-    public function getJobs(): Collection
-    {
-        return $this->jobs;
-    }
-
-    public function addJob(Job $job): self
-    {
-        if (!$this->jobs->contains($job)) {
-            $this->jobs[] = $job;
-            $job->setCompanyId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeJob(Job $job): self
-    {
-        if ($this->jobs->removeElement($job)) {
-            // set the owning side to null (unless already changed)
-            if ($job->getCompanyId() === $this) {
-                $job->setCompanyId(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getSlogan(): ?string
     {
         return $this->slogan;
@@ -313,50 +234,59 @@ class Company
         return $this;
     }
 
-    public function getKeyWords(): ?array
+    /**
+     * @return Collection|SocialMedia[]
+     */
+    public function getSocialMedia(): Collection
     {
-        return $this->keyWords;
+        return $this->socialMedia;
     }
 
-    public function setKeyWords(?array $keyWords): self
+    public function addSocialMedium(SocialMedia $socialMedium): self
     {
-        $this->keyWords = $keyWords;
+        if (!$this->socialMedia->contains($socialMedium)) {
+            $this->socialMedia[] = $socialMedium;
+            $socialMedium->setCompany($this);
+        }
 
         return $this;
     }
 
-    public function getPerks(): ?array
+    public function removeSocialMedium(SocialMedia $socialMedium): self
     {
-        return $this->perks;
-    }
-
-    public function setPerks(?array $perks): self
-    {
-        $this->perks = $perks;
+        if ($this->socialMedia->removeElement($socialMedium)) {
+            // set the owning side to null (unless already changed)
+            if ($socialMedium->getCompany() === $this) {
+                $socialMedium->setCompany(null);
+            }
+        }
 
         return $this;
     }
 
-    public function getLogo(): ?string
+    /**
+     * @return Collection|CompanyKeywords[]
+     */
+    public function getCompanyKeywords(): Collection
     {
-        return $this->logo;
+        return $this->companyKeywords;
     }
 
-    public function setLogo(?string $logo): self
+    public function addCompanyKeyword(CompanyKeywords $companyKeyword): self
     {
-        $this->logo = $logo;
+        if (!$this->companyKeywords->contains($companyKeyword)) {
+            $this->companyKeywords[] = $companyKeyword;
+            $companyKeyword->addCompany($this);
+        }
 
         return $this;
     }
 
-    public function getBanner(): ?string
+    public function removeCompanyKeyword(CompanyKeywords $companyKeyword): self
     {
-        return $this->banner;
-    }
-
-    public function setBanner(?string $banner): self
-    {
-        $this->banner = $banner;
+        if ($this->companyKeywords->removeElement($companyKeyword)) {
+            $companyKeyword->removeCompany($this);
+        }
 
         return $this;
     }
