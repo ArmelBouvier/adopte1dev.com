@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Company;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
@@ -21,6 +22,16 @@ class CompanyCrudController extends AbstractCrudController
     {
         return Company::class;
     }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPageTitle(Crud::PAGE_INDEX, 'Liste des entreprises')
+            ->setEntityLabelInSingular('Entreprise')
+            ->setEntityLabelInPlural('Entreprises')
+        ;
+    }
+
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -45,6 +56,7 @@ class CompanyCrudController extends AbstractCrudController
                 '100-1000' => '100-1000', 
                 '1000+' => '1000+',
                 ])->setLabel('Effectifs de l\'entreprise')->hideOnIndex(),
+            AssociationField::new('companyKeywords')->setLabel('Mots-clés'),
             DateTimeField::new('created_at'),
         ];
     }

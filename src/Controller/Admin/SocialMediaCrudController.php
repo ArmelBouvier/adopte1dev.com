@@ -3,17 +3,27 @@
 namespace App\Controller\Admin;
 
 use App\Entity\SocialMedia;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class SocialMediaCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
         return SocialMedia::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPageTitle(Crud::PAGE_INDEX, 'Liste des réseaux sociaux des entreprises')
+            ->setEntityLabelInSingular('Réseau social')
+            ->setEntityLabelInPlural('Réseaux sociaux')
+            ;
     }
 
     public function configureFields(string $pageName): iterable

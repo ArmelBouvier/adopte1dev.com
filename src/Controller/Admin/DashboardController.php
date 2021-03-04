@@ -3,9 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Company;
+use App\Entity\CompanyKeywords;
 use App\Entity\SocialMedia;
 use App\Entity\User;
 use App\Repository\CompanyRepository;
+use App\Repository\CompanyKeywordsRepository;
 use App\Repository\SocialMediaRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,17 +20,14 @@ class DashboardController extends AbstractDashboardController
 {
     protected $userRepository;
     protected $companyRepository;
-    protected $socialMediaRepository;
 
     public function __construct(
         UserRepository $userRepository,
-        SocialMediaRepository $socialMediaRepository,
         CompanyRepository $companyRepository
     )
     {
         $this->userRepository = $userRepository;
         $this->CompanyRepository = $companyRepository;
-        $this->SocialMediaRepository = $socialMediaRepository;
     }
 
     /**
@@ -59,6 +58,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Entreprises');
         yield MenuItem::linkToCrud('Entreprises', 'fa fa-building', Company::class);
         yield MenuItem::linkToCrud('Réseaux sociaux', 'fa fa-at', SocialMedia::class);
+        yield MenuItem::linkToCrud('Mots-clés', 'fa fa-tag', CompanyKeywords::class);
 
     }
 }
