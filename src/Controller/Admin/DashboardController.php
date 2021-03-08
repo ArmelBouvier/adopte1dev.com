@@ -2,14 +2,18 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Company;
-use App\Entity\CompanyKeywords;
 use App\Entity\Job;
-use App\Entity\SocialMedia;
 use App\Entity\User;
-use App\Repository\CompanyRepository;
+use App\Entity\Stack;
+use App\Entity\Benefit;
+use App\Entity\Company;
+use App\Entity\Position;
+use App\Entity\Technology;
+use App\Entity\SocialMedia;
+use App\Entity\CompanyKeywords;
 use App\Repository\JobRepository;
 use App\Repository\UserRepository;
+use App\Repository\CompanyRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -66,6 +70,10 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Offres d\'emploi');
         yield MenuItem::linkToCrud('Offres d\'emploi', 'fa fa-laptop-code', Job::class);
+        yield MenuItem::linkToCrud('Technologies', 'fa fa-file-code', Technology::class);
+        yield MenuItem::linkToCrud('Stack', 'fa fa-server', Stack::class);
+        yield MenuItem::linkToCrud('Type de poste', 'fa fa-users-cog', Position::class);
+        yield MenuItem::linkToCrud('Perks', 'fa fa-glass-cheers', Benefit::class);
 
     }
 }

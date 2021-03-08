@@ -85,12 +85,18 @@ class Company
      */
     private $keywords;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Job::class, mappedBy="company")
+     */
+    private $jobs;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->socialMedia = new ArrayCollection();
         $this->companyKeywords = new ArrayCollection();
         $this->keywords = new ArrayCollection();
+        $this->jobs = new ArrayCollection();
     }
 
     public function __toString()
@@ -285,6 +291,36 @@ class Company
     public function removeKeyword(CompanyKeywords $keyword): self
     {
         $this->keywords->removeElement($keyword);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Job[]
+     */
+    public function getJobs(): Collection
+    {
+        return $this->jobs;
+    }
+
+    public function addJob(Job $job): self
+    {
+        if (!$this->jobs->contains($job)) {
+            $this->jobs[] = $job;
+            $job->setCompany($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJob(Job $job): self
+    {
+        if ($this->jobs->removeElement($job)) {
+            // set the owning side to null (unless already changed)
+            if ($job->getCompany() === $this) {
+                $job->setCompany(null);
+            }
+        }
 
         return $this;
     }
