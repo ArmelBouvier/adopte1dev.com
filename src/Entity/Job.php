@@ -90,9 +90,9 @@ class Job
     private $recruiting = [];
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $applyAddress;
+    private $contact;
 
     /**
      * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="jobs")
@@ -318,14 +318,14 @@ class Job
         return $this;
     }
 
-    public function getApplyAddress(): ?string
+    public function getContact(): ?string
     {
-        return $this->applyAddress;
+        return $this->contact;
     }
 
-    public function setApplyAddress(string $applyAddress): self
+    public function setContact(string $contact): self
     {
-        $this->applyAddress = $applyAddress;
+        $this->applyAddress = $contact;
 
         return $this;
     }

@@ -52,6 +52,7 @@ class JobCrudController extends AbstractCrudController
                 'CDI' => 'CDI',
                 'CDD' => 'CDD',
                 'Freelance' => 'Frelance',
+                'Alternance' => 'Alternance',
                 'Stage' => 'Stage'])->setLabel('Type de contrat'),
             ChoiceField::new ('remote')->setChoices([
                 'Présentiel' => 'Présentiel',
@@ -61,11 +62,11 @@ class JobCrudController extends AbstractCrudController
                 'Non' => 'Non',
                 'Partiel' => 'Partiel',
                 'Oui' => 'Oui'])->allowMultipleChoices()->setLabel('Recrutement à distance ?')->hideOnIndex(),
-            TextField::new ('salary')->setLabel('Salaire'),
-            TextField::new ('applyAddress')->setLabel('Email pour candidater')->hideOnIndex(),
+            TextField::new ('salary')->setLabel('Salaire')->hideOnIndex(),
+            TextField::new ('contact')->setLabel('Type de contact')->hideOnIndex(),
             AssociationField::new ('perks')->setLabel('Avantages')->hideOnIndex(),
             AssociationField::new ('company')->setLabel('Entreprise'),
-            DateTimeField::new ('created_at')->setLabel('Créée le :')->hideOnIndex(),
+            DateTimeField::new ('created_at')->setLabel('Créée le :'),
         ];
     }
 }

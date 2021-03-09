@@ -75,5 +75,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Type de poste', 'fa fa-users-cog', Position::class);
         yield MenuItem::linkToCrud('Perks', 'fa fa-glass-cheers', Benefit::class);
 
+        yield MenuItem::section('Ressources pratiques');
+
+        yield MenuItem::section('Nos packs');
     }
 }
