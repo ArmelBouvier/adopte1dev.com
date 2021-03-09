@@ -29,6 +29,7 @@ class BenefitCrudController extends AbstractCrudController
         return [
             IdField::new ('id')->onlyOnIndex(),
             TextField::new ('name')->setLabel('Type d\'avantage'),
+            TextField::new ('logo')->setLabel('Logo associé'),
         ];
     }
 }

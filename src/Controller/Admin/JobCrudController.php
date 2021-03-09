@@ -35,8 +35,8 @@ class JobCrudController extends AbstractCrudController
             TextField::new ('title')->setLabel('Intitulé de l\'offre d\'emploi'),
             TextField::new ('subTitle')->setLabel('Sous-titre')->hideOnIndex(),
             TextField::new ('methodology')->setLabel('Méthode de travail')->hideOnIndex(),
-            AssociationField::new ('technologies')->setLabel('Technologies'),
-            AssociationField::new ('stack')->setLabel('Stack'),
+            AssociationField::new ('technologies')->setLabel('Technologies')->hideOnIndex(),
+            AssociationField::new ('stack')->setLabel('Stack')->hideOnIndex(),
             AssociationField::new ('position')->setLabel('Type de poste'),
             TextEditorField::new ('jobDescription')->setLabel('Description de l\'offre d\'emploi')->hideOnIndex(),
             TextEditorField::new ('jobMissions')->setLabel('Missions confiées')->hideOnIndex(),
@@ -47,7 +47,7 @@ class JobCrudController extends AbstractCrudController
                 'Confirmé' => 'Confirmé',
                 'Senior' => 'Senior'])->setLabel('Niveau d\'expérience requis'),
             TextEditorField::new ('miscellaneous')->setLabel('Informations complémentaires')->hideOnIndex(),
-            TextField::new ('location')->setLabel('Lieu de travail'),
+            TextField::new ('location')->setLabel('Lieu de travail')->hideOnIndex(),
             ChoiceField::new ('contract')->setChoices([
                 'CDI' => 'CDI',
                 'CDD' => 'CDD',
@@ -56,16 +56,16 @@ class JobCrudController extends AbstractCrudController
             ChoiceField::new ('remote')->setChoices([
                 'Présentiel' => 'Présentiel',
                 'Télétravail partiel' => 'Télétravail partiel',
-                'Télétravail total' => 'Télétravail total'])->allowMultipleChoices()->setLabel('Ouverte au télétravail ?'),
+                'Télétravail total' => 'Télétravail total'])->allowMultipleChoices()->setLabel('Ouverte au télétravail ?')->hideOnIndex(),
             ChoiceField::new ('recruiting')->setChoices([
                 'Non' => 'Non',
                 'Partiel' => 'Partiel',
-                'Oui' => 'Oui'])->allowMultipleChoices()->setLabel('Recrutement à distance ?'),
+                'Oui' => 'Oui'])->allowMultipleChoices()->setLabel('Recrutement à distance ?')->hideOnIndex(),
             TextField::new ('salary')->setLabel('Salaire'),
-            TextField::new ('applyAddress')->setLabel('Email pour candidater'),
-            AssociationField::new ('perks')->setLabel('Avantages'),
+            TextField::new ('applyAddress')->setLabel('Email pour candidater')->hideOnIndex(),
+            AssociationField::new ('perks')->setLabel('Avantages')->hideOnIndex(),
             AssociationField::new ('company')->setLabel('Entreprise'),
-            DateTimeField::new ('created_at')->setLabel('Créée le :'),
+            DateTimeField::new ('created_at')->setLabel('Créée le :')->hideOnIndex(),
         ];
     }
 }

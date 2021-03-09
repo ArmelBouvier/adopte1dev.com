@@ -29,9 +29,19 @@ class Benefit
      */
     private $jobs;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $logo;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 
     public function getId(): ?int
@@ -74,6 +84,18 @@ class Benefit
         if ($this->jobs->removeElement($job)) {
             $job->removePerk($this);
         }
+
+        return $this;
+    }
+
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(?string $logo): self
+    {
+        $this->logo = $logo;
 
         return $this;
     }

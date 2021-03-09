@@ -85,9 +85,9 @@ class Job
     private $subTitle;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="array", length=255, nullable=true)
      */
-    private $recruiting;
+    private $recruiting = [];
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -306,12 +306,12 @@ class Job
         return $this;
     }
 
-    public function getRecruiting(): ?string
+    public function getRecruiting(): ?array
     {
         return $this->recruiting;
     }
 
-    public function setRecruiting(?string $recruiting): self
+    public function setRecruiting(?array $recruiting): self
     {
         $this->recruiting = $recruiting;
 
