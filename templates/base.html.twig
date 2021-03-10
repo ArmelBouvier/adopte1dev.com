@@ -13,6 +13,9 @@
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
+
+		{# Lien pour Font awesome #}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body>
 		<header>
@@ -46,5 +49,50 @@
 		</header>
 		
 		{% block body %}{% endblock %}
+
+		<footer>
+			<div class="row">
+				<div class="col3 all-centered">
+					<img src="{{ asset('images/logo_white.png') }}" alt="logo white">
+					<h4 class="text-center pacifico text-lightPink">{% trans %}Les meilleurs jobs devs{% endtrans %}</h4>
+				</div>
+				<div class="col3">
+					<h3 class="pacifico text-white">{% trans %}Plan du Site{% endtrans %}</h3>
+					<ul>
+						<li><a href="">{% trans %}Accueil{% endtrans %}</a></li>
+						<li><a href="">{% trans %}Jobs{% endtrans %}</a></li>
+						<li><a href="">{% trans %}Entreprises{% endtrans %}</a></li>
+						<li><a href="">{% trans %}Ressources{% endtrans %}</a></li>
+						<li><a href="">{% trans %}Nos Packs{% endtrans %}</a></li>
+						<li><a href="">{% trans %}A propos{% endtrans %}</a></li>
+						<li><a href="">{% trans %}Contact{% endtrans %}</a></li>
+					</ul>
+				</div>
+				<div class="col3">
+					<h3 class="pacifico text-white">{% trans %}Mentions Légales{% endtrans %}</h3>
+					<ul>
+						<li><a href="">{% trans %}Conditions générales{% endtrans %}</a></li>
+						<li><a href="">{% trans %}Mentions Légales{% endtrans %}</a></li>
+						<li><a href="">{% trans %}Politique de confidentialité{% endtrans %}</a></li>
+					</ul>
+				</div>
+				<div class="col3">
+					<h3 class="pacifico text-white">{% trans %}Contactez-nous{% endtrans %}</h3>
+					<ul>
+						<li><a href="mailto:hello@adopte1dev.com">hello@adopte1dev.com</a></li>
+						<li class="text-lightPink">+33648363142</li>
+						<li>
+							<a class="socials" href=""><i class="fa fa-facebook"></i></a>
+							<a class="socials" href=""><i class="fa fa-twitter"></i></a>
+							<a class="socials" href=""><i class="fa fa-linkedin"></i></a>
+							<a class="socials" href=""><i class="fa fa-instagram"></i></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row bg-darkblue">
+				<p>Tous droits réservés © 2020-2021 Adopte1dev.com | Propulsé par Adopte1dev.com <span><i class="fa fa-heart"></i></span></p>
+			</div>
+		</footer>
 	</body>
 </html>
