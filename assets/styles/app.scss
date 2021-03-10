@@ -1,1 +1,75 @@
-@import "~bootstrap/scss/bootstrap";
+@font-face {
+    font-family: Calibri;
+    src: url('../../public/fonts/calibri/Calibri_Regular.ttf');
+}
+
+body {
+    width: 80vw;
+    height: 100vh;
+    margin: auto;
+    font-family: Calibri_Regular, sans-serif;    
+    font-weight: bolder;
+}
+
+header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2vh;
+}
+
+.header__logo img{
+    height: 7vh;
+}
+
+.header__subcontent{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header__subcontent form input{
+    border-radius: 30px;
+    border: 1px solid;
+}
+
+.header__subcontent form button{
+    background-color: white;
+    color: #28007B;    
+    font-weight: bolder;
+    border: none;
+}
+
+.header__subcontent img {
+    height: 35px;
+    border-radius: 50%;
+    margin-left: 1vw;
+}
+
+nav {
+    width: 100%;
+    background-color: #28007B;
+    border-radius: 30px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    padding-inline-start: 0;
+}
+
+nav ul li{
+    list-style: none;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li a:hover{
+    text-shadow: 1px 1px 10px #FFAADE;
+}

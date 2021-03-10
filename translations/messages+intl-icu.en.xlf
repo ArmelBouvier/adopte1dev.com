@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="1PQek7g" resname="Chercher">
+        <source>Chercher</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="UzFhc1Y" resname="Accueil">
+        <source>Accueil</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="Lxeg_NU" resname="Jobs">
+        <source>Jobs</source>
+        <target>Jobs</target>
+      </trans-unit>
+      <trans-unit id="mQaVQdn" resname="Entreprises">
+        <source>Entreprises</source>
+        <target>Companies</target>
+      </trans-unit>
+      <trans-unit id="8VwSl1I" resname="Ressources">
+        <source>Ressources</source>
+        <target>Resources</target>
+      </trans-unit>
+      <trans-unit id="o39s.kt" resname="Nos packs">
+        <source>Nos packs</source>
+        <target>Our packages</target>
+      </trans-unit>
+      <trans-unit id="ZyFT62v" resname="A propos">
+        <source>A propos</source>
+        <target>About</target>
+      </trans-unit>
+      <trans-unit id="K1w9JnI" resname="Contact">
+        <source>Contact</source>
+        <target>Contact</target>
+      </trans-unit>
+      <trans-unit id="fPMmoyW" resname="Bienvenue sur">
+        <source>Bienvenue sur</source>
+        <target>Welcome on</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

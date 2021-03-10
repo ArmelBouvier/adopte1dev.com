@@ -11,13 +11,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class MainController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="browse")
      */
-    public function index(): Response
+    public function browse(): Response
     {
-        return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
+        return $this->render('main/browse.html.twig');
     }
 
     /**

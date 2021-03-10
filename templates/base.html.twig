@@ -4,8 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>
-			{% block title %}Welcome!
-			{% endblock %}
+			{% block title %}Adopte1dev.com{% endblock %}
 		</title>
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
@@ -16,13 +15,36 @@
 		{% endblock %}
 	</head>
 	<body>
-		{% for locale in locales %}
-			{% if locale != app.request.locale %}
-				<a href="{{ path('change_locale', {'locale': locale}) }}">
-					<img src="{{ asset('images/locales/'~locale~'.png') }}" alt="{{locale}}">
-				</a>
-			{% endif %}
-		{% endfor %}
+		<header>
+		<div class="header__logo">
+			<img src="{{ asset('images/logo.png') }}" alt="logo">
+		</div>
+		<div class="header__subcontent">
+			<form action="">
+				<input type="text">
+				<button>{% trans %}Chercher{% endtrans %}</button>
+			</form>
+			{% for locale in locales %}
+				{% if locale != app.request.locale %}
+					<a href="{{ path('change_locale', {'locale': locale}) }}">
+						<img src="{{ asset('images/locales/'~locale~'.png') }}" alt="{{locale}}">
+					</a>
+				{% endif %}
+			{% endfor %}
+		</div>
+			<nav>
+				<ul>
+					<li><a href="">{% trans %}Accueil{% endtrans %}</a></li>
+					<li><a href="">{% trans %}Jobs{% endtrans %}</a></li>
+					<li><a href="">{% trans %}Entreprises{% endtrans %}</a></li>
+					<li><a href="">{% trans %}Ressources{% endtrans %}</a></li>
+					<li><a href="">{% trans %}Nos packs{% endtrans %}</a></li>
+					<li><a href="">{% trans %}A propos{% endtrans %}</a></li>
+					<li><a href="">{% trans %}Contact{% endtrans %}</a></li>
+				</ul>
+			</nav>
+		</header>
+		
 		{% block body %}{% endblock %}
 	</body>
 </html>
