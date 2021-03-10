@@ -34,9 +34,15 @@ class Technology
      */
     private $jobs;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Training::class, mappedBy="techs")
+     */
+    private $trainings;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
+        $this->trainings = new ArrayCollection();
     }
 
     public function __toString()
@@ -95,6 +101,33 @@ class Technology
     {
         if ($this->jobs->removeElement($job)) {
             $job->removeTechnology($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Training[]
+     */
+    public function getTrainings(): Collection
+    {
+        return $this->trainings;
+    }
+
+    public function addTraining(Training $training): self
+    {
+        if (!$this->trainings->contains($training)) {
+            $this->trainings[] = $training;
+            $training->addTech($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraining(Training $training): self
+    {
+        if ($this->trainings->removeElement($training)) {
+            $training->removeTech($this);
         }
 
         return $this;

@@ -47,9 +47,9 @@
 				</ul>
 			</nav>
 		</header>
-		
+		<main>
 		{% block body %}{% endblock %}
-
+		</main>
 		<footer>
 			<div class="row">
 				<div class="col3 all-centered">
@@ -82,16 +82,16 @@
 						<li><a href="mailto:hello@adopte1dev.com">hello@adopte1dev.com</a></li>
 						<li class="text-lightPink">+33648363142</li>
 						<li>
-							<a class="socials" href=""><i class="fa fa-facebook"></i></a>
-							<a class="socials" href=""><i class="fa fa-twitter"></i></a>
-							<a class="socials" href=""><i class="fa fa-linkedin"></i></a>
-							<a class="socials" href=""><i class="fa fa-instagram"></i></a>
+							<a class="socials" rel="noreferrer" target="_blank" href="https://www.facebook.com/adopte1dev"><i class="fa fa-facebook"></i></a>
+							<a class="socials" rel="noreferrer" target="_blank" href="https://twitter.com/Adopte1Dev"><i class="fa fa-twitter"></i></a>
+							<a class="socials" rel="noreferrer" target="_blank" href="https://www.linkedin.com/company/adopteundev/"><i class="fa fa-linkedin"></i></a>
+							<a class="socials" rel="noreferrer" target="_blank" href="https://www.instagram.com/adopte1dev/"><i class="fa fa-instagram"></i></a>
 						</li>
 					</ul>
 				</div>
 			</div>
 			<div class="row bg-darkblue">
-				<p>Tous droits réservés © 2020-2021 Adopte1dev.com | Propulsé par Adopte1dev.com <span><i class="fa fa-heart"></i></span></p>
+				<p>{% trans %}Tous droits réservés{% endtrans %} © 2020-2021 Adopte1dev.com | {% trans %}Propulsé par{% endtrans %} Adopte1dev.com <span><i class="fa fa-heart"></i></span></p>
 			</div>
 		</footer>
 	</body>

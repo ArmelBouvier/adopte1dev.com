@@ -41,6 +41,42 @@
         <source>Bienvenue sur</source>
         <target>Welcome on</target>
       </trans-unit>
+      <trans-unit id="rKtjCKY" resname="Les meilleurs jobs devs">
+        <source>Les meilleurs jobs devs</source>
+        <target>The best dev jobs</target>
+      </trans-unit>
+      <trans-unit id="hLQrIxC" resname="Plan du Site">
+        <source>Plan du Site</source>
+        <target>Site Map</target>
+      </trans-unit>
+      <trans-unit id="sK__8go" resname="Nos Packs">
+        <source>Nos Packs</source>
+        <target>Our Packages</target>
+      </trans-unit>
+      <trans-unit id="yqJeZE9" resname="Mentions Légales">
+        <source>Mentions Légales</source>
+        <target>Legal Notices</target>
+      </trans-unit>
+      <trans-unit id="1wjH7Qt" resname="Conditions générales">
+        <source>Conditions générales</source>
+        <target>Terms and conditions</target>
+      </trans-unit>
+      <trans-unit id="_HO33Mj" resname="Politique de confidentialité">
+        <source>Politique de confidentialité</source>
+        <target>Confidentiality policy</target>
+      </trans-unit>
+      <trans-unit id="SWtMYIv" resname="Contactez-nous">
+        <source>Contactez-nous</source>
+        <target>Contact us</target>
+      </trans-unit>
+      <trans-unit id="kKrC340" resname="Tous droits réservés">
+        <source>Tous droits réservés</source>
+        <target>All rights reserved</target>
+      </trans-unit>
+      <trans-unit id="VLoLPWh" resname="Propulsé par">
+        <source>Propulsé par</source>
+        <target>Powered by</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

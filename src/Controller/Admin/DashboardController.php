@@ -7,7 +7,11 @@ use App\Entity\User;
 use App\Entity\Stack;
 use App\Entity\Benefit;
 use App\Entity\Company;
+use App\Entity\Feature;
+use App\Entity\Package;
 use App\Entity\Position;
+use App\Entity\Training;
+use App\Entity\Coworking;
 use App\Entity\Technology;
 use App\Entity\SocialMedia;
 use App\Entity\CompanyKeywords;
@@ -76,7 +80,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Perks', 'fa fa-glass-cheers', Benefit::class);
 
         yield MenuItem::section('Ressources pratiques');
+        yield MenuItem::linkToCrud('Formation', 'fa fa-graduation-cap', Training::class);
+        yield MenuItem::linkToCrud('Coworking', 'fa fa-building', Coworking::class);
 
         yield MenuItem::section('Nos packs');
+        yield MenuItem::linkToCrud('Package', 'fa fa-box', Package::class);
+        yield MenuItem::linkToCrud('Feature', 'fa fa-gift', Feature::class);
     }
 }
