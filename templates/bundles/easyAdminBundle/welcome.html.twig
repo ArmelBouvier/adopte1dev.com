@@ -8,22 +8,61 @@
 		<div class="row justify-content-around">
 			<div class="card" style="width: 18rem;">
 				<div class="card-body">
-					<h5 class="card-title"><span class="text-info display-3">{{countAllUsers['value']}}</span> Utilisateurs</h5>
+					<h5 class="card-title">
+						<span class="text-info display-3">{{countAllUsers['value']}}</span>
+						Utilisateurs</h5>
 				</div>
 			</div>
 
-            <div class="card" style="width: 18rem;">
+			<div class="card" style="width: 18rem;">
 				<div class="card-body">
-					<h5 class="card-title"><span class="text-info display-3">{{countAllJobs['value']}}</span> Jobs</h5>
+					<h5 class="card-title">
+						<span class="text-info display-3">{{countAllJobs['value']}}</span>
+						Jobs</h5>
 				</div>
 			</div>
 
-            <div class="card" style="width: 18rem;">
+			<div class="card" style="width: 18rem;">
 				<div class="card-body">
-					<h5 class="card-title"><span class="text-info display-3">{{countAllCompanies['value']}}</span> Entreprises</h5>
+					<h5 class="card-title">
+						<span class="text-info display-3">{{countAllCompanies['value']}}</span>
+						Entreprises</h5>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-around pt-5">
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">
+						<span class="text-info display-3">{{countAllTrainings['value']}}</span>
+						Formations</h5>
+				</div>
+			</div>
+
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">
+						<span class="text-info display-3">{{countAllCoworkings['value']}}</span>
+						Espaces de coworking</h5>
+				</div>
+			</div>
+
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">
+						<span class="text-info display-3">{{countAllPackages['value']}}</span>
+						Packs</h5>
 				</div>
 			</div>
 		</div>
 
+		<div class="row pt-5">
+			<div class="col-12">
+				<h5>
+					Dernières infos ajoutées :
+				</h5>
+			</div>
+		</div>
 	</div>
+		
 {% endblock %}

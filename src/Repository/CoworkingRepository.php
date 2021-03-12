@@ -19,6 +19,14 @@ class CoworkingRepository extends ServiceEntityRepository
         parent::__construct($registry, Coworking::class);
     }
 
+    public function countAllCoworkings()
+    {
+        $queryBuilder = $this->createQueryBuilder('a');
+        $queryBuilder->select('COUNT(a.id) as value');
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
+
     // /**
     //  * @return Coworking[] Returns an array of Coworking objects
     //  */

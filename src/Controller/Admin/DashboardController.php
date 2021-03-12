@@ -18,6 +18,9 @@ use App\Entity\CompanyKeywords;
 use App\Repository\JobRepository;
 use App\Repository\UserRepository;
 use App\Repository\CompanyRepository;
+use App\Repository\PackageRepository;
+use App\Repository\TrainingRepository;
+use App\Repository\CoworkingRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -33,13 +36,18 @@ class DashboardController extends AbstractDashboardController
     public function __construct(
         UserRepository $userRepository,
         CompanyRepository $companyRepository,
-        JobRepository $jobRepository
+        JobRepository $jobRepository,
+        TrainingRepository $trainingRepository,
+        CoworkingRepository $coworkingRepository,
+        PackageRepository $packageRepository
     )
-
     {
         $this->UserRepository = $userRepository;
         $this->CompanyRepository = $companyRepository;
         $this->JobRepository = $jobRepository;
+        $this->TrainingRepository = $trainingRepository;
+        $this->CoworkingRepository = $coworkingRepository;
+        $this->PackageRepository = $packageRepository;
     }
 
     /**
@@ -51,6 +59,9 @@ class DashboardController extends AbstractDashboardController
             'countAllUsers' => $this->UserRepository->countAllUsers(),
             'countAllJobs' => $this->JobRepository->countAllJobs(),
             'countAllCompanies' => $this->CompanyRepository->countAllCompanies(),
+            'countAllTrainings' => $this->TrainingRepository->countAllTrainings(),
+            'countAllCoworkings' => $this->CoworkingRepository->countAllCoworkings(),
+            'countAllPackages' => $this->PackageRepository->countAllPackages(),
         ]);
     }
 
