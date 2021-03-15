@@ -4,7 +4,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>
-			{% block title %}Adopte1dev.com{% endblock %}
+			{% block title %}Adopte1dev.com
+			{% endblock %}
 		</title>
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
@@ -16,49 +17,71 @@
 
 		{# Lien pour Font awesome #}
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	</head>
-	<body>
+	<body class="container-fluid">
 		<header>
-		<div class="header__logo">
-			<img src="{{ asset('images/logo.png') }}" alt="logo">
-		</div>
-		<div class="header__subcontent">
-			<form action="">
-				<input type="text">
-				<button>{% trans %}Chercher{% endtrans %}</button>
-			</form>
-			{% for locale in locales %}
-				{% if locale != app.request.locale %}
-					<a href="{{ path('change_locale', {'locale': locale}) }}">
-						<img src="{{ asset('images/locales/'~locale~'.png') }}" alt="{{locale}}">
-					</a>
-				{% endif %}
-			{% endfor %}
-		</div>
-			<nav>
-				<ul>
-					<li><a href="">{% trans %}Accueil{% endtrans %}</a></li>
-					<li><a href="">{% trans %}Jobs{% endtrans %}</a></li>
-					<li><a href="">{% trans %}Entreprises{% endtrans %}</a></li>
-					<li><a href="">{% trans %}Ressources{% endtrans %}</a></li>
-					<li><a href="">{% trans %}Nos packs{% endtrans %}</a></li>
-					<li><a href="">{% trans %}A propos{% endtrans %}</a></li>
-					<li><a href="">{% trans %}Contact{% endtrans %}</a></li>
-				</ul>
+			<div class="row pt-5">
+				<div class="col-12 text-center">
+					<img class="header__logo" src="{{ asset('images/logo.png') }}" alt="logo">
+				</div>
+			</div>
+			<nav class="mt-5 navbar navbar-expand-lg navbar-dark bg-violet rounded-pill">
+				<div class="container-fluid">
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse " id="navbarSupportedContent">
+						<ul class="navbar-nav mb-2 mb-lg-0 w-100 justify-content-around">
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="#">{% trans %}Accueil{% endtrans %}</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">{% trans %}Jobs{% endtrans %}</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">{% trans %}Entreprises{% endtrans %}</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">{% trans %}Ressources{% endtrans %}</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">{% trans %}Nos packs{% endtrans %}</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">{% trans %}A propos{% endtrans %}</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">{% trans %}Contact{% endtrans %}</a>
+							</li>
+						</ul>
+						<form class="d-flex" action="">
+							<input class="rounded-pill form-control me-2" type="search">
+							<button class="bg-transparent border-0 text-white fw-bold" type="submit">{% trans %}Chercher{% endtrans %}</button>
+						</form>
+						{% for locale in locales %}
+							{% if locale != app.request.locale %}
+								<a class="ms-2 rounded-circle" href="{{ path('change_locale', {'locale': locale}) }}">
+									<img class="header_locale rounded-circle" src="{{ asset('images/locales/'~locale~'.png') }}" alt="{{locale}}">
+								</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
 			</nav>
 		</header>
 		<main>
-		{% block body %}{% endblock %}
+			{% block body %}{% endblock %}
 		</main>
-		<footer>
-			<div class="row">
-				<div class="col3 all-centered">
-					<img src="{{ asset('images/logo_white.png') }}" alt="logo white">
+		<footer class="text-white">
+			<div class="row bg-violet py-3">
+				<div class="col-md-3 d-flex flex-column justify-content-center align-items-center">
+					<img class="w-50" src="{{ asset('images/logo_white.png') }}" alt="logo white">
 					<h4 class="text-center pacifico text-lightPink">{% trans %}Les meilleurs jobs devs{% endtrans %}</h4>
 				</div>
-				<div class="col3">
+				<div class="col-md-3">
 					<h3 class="pacifico text-white">{% trans %}Plan du Site{% endtrans %}</h3>
-					<ul>
+					<ul class="list-unstyled">
 						<li><a href="">{% trans %}Accueil{% endtrans %}</a></li>
 						<li><a href="">{% trans %}Jobs{% endtrans %}</a></li>
 						<li><a href="">{% trans %}Entreprises{% endtrans %}</a></li>
@@ -68,31 +91,50 @@
 						<li><a href="">{% trans %}Contact{% endtrans %}</a></li>
 					</ul>
 				</div>
-				<div class="col3">
+				<div class="col-md-3">
 					<h3 class="pacifico text-white">{% trans %}Mentions Légales{% endtrans %}</h3>
-					<ul>
+					<ul class="list-unstyled">
 						<li><a href="">{% trans %}Conditions générales{% endtrans %}</a></li>
 						<li><a href="">{% trans %}Mentions Légales{% endtrans %}</a></li>
 						<li><a href="">{% trans %}Politique de confidentialité{% endtrans %}</a></li>
 					</ul>
 				</div>
-				<div class="col3">
+				<div class="col-md-3">
 					<h3 class="pacifico text-white">{% trans %}Contactez-nous{% endtrans %}</h3>
-					<ul>
-						<li><a href="mailto:hello@adopte1dev.com">hello@adopte1dev.com</a></li>
-						<li class="text-lightPink">+33648363142</li>
+					<ul class="list-unstyled">
 						<li>
-							<a class="socials" rel="noreferrer" target="_blank" href="https://www.facebook.com/adopte1dev"><i class="fa fa-facebook"></i></a>
-							<a class="socials" rel="noreferrer" target="_blank" href="https://twitter.com/Adopte1Dev"><i class="fa fa-twitter"></i></a>
-							<a class="socials" rel="noreferrer" target="_blank" href="https://www.linkedin.com/company/adopteundev/"><i class="fa fa-linkedin"></i></a>
-							<a class="socials" rel="noreferrer" target="_blank" href="https://www.instagram.com/adopte1dev/"><i class="fa fa-instagram"></i></a>
+							<a href="mailto:hello@adopte1dev.com">hello@adopte1dev.com</a>
+						</li>
+						<li class="text-lightPink">+33648363142</li>
+						<li class="pt-2">
+							<a class="bg-white me-2 rounded d-inline-block text-violet socials" rel="noreferrer" target="_blank" href="https://www.facebook.com/adopte1dev">
+								<i class="fa fa-facebook"></i>
+							</a>
+							<a class="bg-white me-2 rounded d-inline-block text-violet socials" rel="noreferrer" target="_blank" href="https://twitter.com/Adopte1Dev">
+								<i class="fa fa-twitter"></i>
+							</a>
+							<a class="bg-white me-2 rounded d-inline-block text-violet socials" rel="noreferrer" target="_blank" href="https://www.linkedin.com/company/adopteundev/">
+								<i class="fa fa-linkedin"></i>
+							</a>
+							<a class="bg-white me-2 rounded d-inline-block text-violet socials" rel="noreferrer" target="_blank" href="https://www.instagram.com/adopte1dev/">
+								<i class="fa fa-instagram"></i>
+							</a>
 						</li>
 					</ul>
 				</div>
 			</div>
-			<div class="row bg-darkblue">
-				<p>{% trans %}Tous droits réservés{% endtrans %} © 2020-2021 Adopte1dev.com | {% trans %}Propulsé par{% endtrans %} Adopte1dev.com <span><i class="fa fa-heart"></i></span></p>
+			<div class="row bg-darkBlue justify-content-center align-items-center">
+				<p class="m-0 p-2 text-center">{% trans %}Tous droits réservés{% endtrans %}
+					© 2020-2021 Adopte1dev.com |
+					{% trans %}Propulsé par{% endtrans %}
+					Adopte1dev.com
+					<span class="text-pink">
+						<i class="fa fa-heart"></i>
+					</span>
+				</p>
 			</div>
+			<!-- JavaScript Bundle with Popper -->
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 		</footer>
 	</body>
 </html>

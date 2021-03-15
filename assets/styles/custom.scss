@@ -1,0 +1,86 @@
+@font-face {
+    font-family: Calibri;
+    src: url('../../public/fonts/calibri/Calibri_Regular.ttf');
+}
+
+@font-face {
+    font-family: Pacifico;
+    src: url('../../public/fonts/pacifico/Pacifico.ttf');
+}
+
+body{
+    font-family: Calibri_Regular, sans-serif;
+}
+
+/*
+TOOLS
+*/
+.text-violet{
+    color: #28007B;
+}
+
+.text-darkBlue{
+    color: #11244D;
+}
+
+.text-lightPink{
+    color: #FFAADE;
+}
+
+.text-pink{
+    color: #EC1F7D;
+}
+
+.bg-violet{
+    background-color: #28007B;
+}
+
+.bg-darkBlue{
+    background-color: #11244D;
+}
+
+.bg-lightPink{
+    background-color: #FFAADE;
+}
+
+.bg-pink{
+    background-color: #EC1F7D;
+}
+
+.pacifico {
+    font-family: Pacifico;
+    font-weight: 400;
+}
+
+
+/*
+HEADER
+*/
+
+.header__logo{
+    width: auto;
+    height: 10vh;
+}
+
+.header_locale{
+    max-height: 35px;
+}
+
+nav a:hover{
+    text-shadow: 1px 1px 10px#FFAADE;
+}
+
+/*
+FOOTER
+*/
+footer a {
+    text-decoration: none;
+    color: #FFAADE;
+}
+
+.socials{
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    font-size: 20px;
+}

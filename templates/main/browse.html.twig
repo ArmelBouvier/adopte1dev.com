@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{# {% block title %}Hello MainController!{% endblock %} #}
 
 {% block body %}
 
-<div class="container bg-warning">
+	<div class="container">
+		<hr>
+		<h1>{% trans %}Nos actuces{% endtrans %}</h1>
+		<p>({% trans %}mi-actus mi-actuces{% endtrans %})</p>
 
-    <h1>{% trans %}Bienvenue sur{% endtrans %} adopte1dev.com</h1>
+		
 
-    
-</div>
+
+	</div>
 {% endblock %}
