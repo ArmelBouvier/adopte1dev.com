@@ -4,13 +4,256 @@
 
 {% block body %}
 
-	<div class="container">
-		<hr>
-		<h1>{% trans %}Nos actuces{% endtrans %}</h1>
-		<p>({% trans %}mi-actus mi-actuces{% endtrans %})</p>
+	<hr>
 
-		
-
-
+	<div class="row py-5">
+		<div class="col-12 text-center">
+			<h2 class="text-violet display-3 custom-shadow">{% trans %}Nos actuces{% endtrans %}</h2>
+			<p class="text-gray custom-shadow">({% trans %}mi-actus mi-actuces{% endtrans %})</p>
+		</div>
 	</div>
+
+	<div class="row mb-5">
+		<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+			<div class="carousel-indicators">
+				<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+				<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+				<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			</div>
+			<div class="carousel-inner">
+				<div class="carousel-item active" data-bs-interval="10000">
+					<img src="{{ asset('images/news/job-1.jpg') }}" class="d-block w-100" alt="...">
+					<div class="carousel-caption d-none d-md-block bg-light rounded">
+						<h5>Titre accrocheur</h5>
+						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio amet consectetur provident dolorem eaque tenetur omnis itaque illo beatae id ratione tempora fuga, maxime delectus, praesentium, neque quo laudantium fugiat!</p>
+						<a href="#" class="btn btn-outline-dark rounded-pill">Voir plus</a>
+					</div>
+				</div>
+				<div class="carousel-item" data-bs-interval="2000">
+					<img src="{{ asset('images/news/job-2.jpg') }}" class="d-block w-100" alt="...">
+					<div class="carousel-caption d-none d-md-block bg-light rounded">
+						<h5>Titre accrocheur</h5>
+						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio amet consectetur provident dolorem eaque tenetur omnis itaque illo beatae id ratione tempora fuga, maxime delectus, praesentium, neque quo laudantium fugiat!</p>
+						<a href="#" class="btn btn-outline-dark rounded-pill">Voir plus</a>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img src="{{ asset('images/news/job-3.jpg') }}" class="d-block w-100" alt="...">
+					<div class="carousel-caption d-none d-md-block bg-light rounded">
+						<h5>Titre accrocheur</h5>
+						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio amet consectetur provident dolorem eaque tenetur omnis itaque illo beatae id ratione tempora fuga, maxime delectus, praesentium, neque quo laudantium fugiat!</p>
+						<a href="#" class="btn btn-outline-dark rounded-pill">Voir plus</a>
+					</div>
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+	</div>
+
+	<div class="row landing-banner py-5">
+		<div class="col-md-6 d-flex justify-content-end align-items-center">
+			<h3>{% trans %}Bienvenue sur{% endtrans %}
+				<br>
+				Adopte1dev.com
+			</h3>
+		</div>
+		<div class="col-md-6 d-flex justify-content-start align items-center">
+			<p class="p-5 bg-light w-50">
+				{% trans %}LE site de l’emploi des devs en France !
+				<br>
+				Ce portail est la solution pour rendre la recherche d’emploi pour les développeurs francophones plus facile, plus rapide et plus efficace
+				{% endtrans %}
+				👍
+			</p>
+		</div>
+	</div>
+
+	<div class="row py-5">
+		<div class="col-12 text-center">
+			<h2 class="mb-5 text-violet display-3 custom-shadow">{% trans %}Les Dernières Offres{% endtrans %}</h2>
+			<div class="container">
+				<div class="row border mt-3 p-3 job-offer">
+					<div class="col-md-2 d-flex justify-content-center align-items-center">
+						<span class="rounded-circle p-2 text-white bg-darkBlue">_X_</span>
+					</div>
+					<div class="col-md-10">
+						<div class="row">
+							<div class="col-md-8">
+								<h4 class="text-start">Intitulé du poste</h4>
+							</div>
+							<div class="col-md-4 text-end">
+								<span class="rounded-pill border">Salaire</span>
+								<span class="rounded-pill border">Remote</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">Nom de l'entreprise</div>
+							<div class="col-md-8">
+								<span class="rounded-pill border">Expérience</span>
+								<span class="rounded-pill border">Contrat</span>
+								<span class="rounded alert-info border">Tag</span>
+								<span class="rounded alert-info border">Tag</span>
+								<span class="rounded alert-info border">Tag</span>
+							</div>
+							<div class="col-md-2">Date de publication</div>
+						</div>
+					</div>
+				</div>
+				<div class="row border mt-3 p-3 job-offer">
+					<div class="col-md-2 d-flex justify-content-center align-items-center">
+						<span class="rounded-circle p-2 text-white bg-darkBlue">_X_</span>
+					</div>
+					<div class="col-md-10">
+						<div class="row">
+							<div class="col-md-8">
+								<h4 class="text-start">Intitulé du poste</h4>
+							</div>
+							<div class="col-md-4 text-end">
+								<span class="rounded-pill border">Salaire</span>
+								<span class="rounded-pill border">Remote</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">Nom de l'entreprise</div>
+							<div class="col-md-8">
+								<span class="rounded-pill border">Expérience</span>
+								<span class="rounded-pill border">Contrat</span>
+								<span class="rounded alert-info border">Tag</span>
+								<span class="rounded alert-info border">Tag</span>
+								<span class="rounded alert-info border">Tag</span>
+							</div>
+							<div class="col-md-2">Date de publication</div>
+						</div>
+					</div>
+				</div>
+				<div class="row border mt-3 p-3 job-offer">
+					<div class="col-md-2 d-flex justify-content-center align-items-center">
+						<span class="rounded-circle p-2 text-white bg-darkBlue">_X_</span>
+					</div>
+					<div class="col-md-10">
+						<div class="row">
+							<div class="col-md-8">
+								<h4 class="text-start">Intitulé du poste</h4>
+							</div>
+							<div class="col-md-4 text-end">
+								<span class="rounded-pill border">Salaire</span>
+								<span class="rounded-pill border">Remote</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">Nom de l'entreprise</div>
+							<div class="col-md-8">
+								<span class="rounded-pill border">Expérience</span>
+								<span class="rounded-pill border">Contrat</span>
+								<span class="rounded alert-info border">Tag</span>
+								<span class="rounded alert-info border">Tag</span>
+								<span class="rounded alert-info border">Tag</span>
+							</div>
+							<div class="col-md-2">Date de publication</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mb-5">
+		<a class="text-center text-gray fw-bold text-decoration-none" href="#">{% trans %}AFFICHER PLUS DE POSTES{% endtrans %}</a>
+	</div>
+	<div class="row mb-5">
+		<div class="col-md-6 p-5 text-end border-end">
+			<h5>95</h5>
+			<p>{% trans %}Emplois publiés{% endtrans %}</p>
+		</div>
+		<div class="col-md-6 p-5 border-start">
+			<h5>55</h5>
+			<p>{% trans %}Entreprises{% endtrans %}</p>
+		</div>
+	</div>
+
+	<hr>
+
+	<div id="carouselExampleSlidesOnly" class="carousel slide my-5" data-bs-ride="carousel">
+		<div class="carousel-inner text-white bg-dark p-5">
+			<h2 class="text-center custom-shadow">{% trans %}Ils nous ont fait confiance{% endtrans %}</h2>
+			<div class="carousel-item active">
+
+				<div class="row">
+					<div class="col-md-6 d-flex justify-content-center align-items-center">
+						<img class="rounded-pill shadow border-light" src="{{ asset('images/testimonials/chiron-it.png') }}" alt="">
+					</div>
+					<div class="col-md-6">
+						<div class="display-1">"</div>
+						<p>Merci pour tout ! Nous attendons une validation avec un candidat que nous avons rencontrés grâce à votre diffusion de notre annonce. Je vous remercie et ne manquerai pas de renouveler l’opération avec vous pour de nouvelles périodes de recrutement.</p>
+						<h3>Auteur</h3>
+						<h5 class="fs-bold">QUALITE</h5>
+					</div>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<div class="row">
+					<div class="col-md-6 d-flex justify-content-center align-items-center">
+						<img class="rounded-pill shadow border-light" src="{{ asset('images/testimonials/chiron-it.png') }}" alt="">
+					</div>
+					<div class="col-md-6">
+						<div class="display-1">"</div>
+						<p>Merci pour tout ! Nous attendons une validation avec un candidat que nous avons rencontrés grâce à votre diffusion de notre annonce. Je vous remercie et ne manquerai pas de renouveler l’opération avec vous pour de nouvelles périodes de recrutement.</p>
+						<h3>Auteur</h3>
+						<h5 class="fs-bold">QUALITE</h5>
+					</div>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<div class="row">
+					<div class="col-md-6 d-flex justify-content-center align-items-center">
+						<img class="rounded-pill shadow border-light" src="{{ asset('images/testimonials/chiron-it.png') }}" alt="">
+					</div>
+					<div class="col-md-6">
+						<div class="display-1">"</div>
+						<p>Merci pour tout ! Nous attendons une validation avec un candidat que nous avons rencontrés grâce à votre diffusion de notre annonce. Je vous remercie et ne manquerai pas de renouveler l’opération avec vous pour de nouvelles périodes de recrutement.</p>
+						<h3>Auteur</h3>
+						<h5 class="fs-bold">QUALITE</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+	<div class="container  py-5">
+		<div class="row py-5">
+			<div class="col-12 text-center">
+				<h2 class="text-violet display-3 custom-shadow">{% trans %}On leur a fait confiance{% endtrans %}</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="card mx-3" style="width: 18rem;">
+				<img src="..." class="card-img-top" alt="...">
+				<div class="card-body">
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</div>
+			<div class="card mx-3" style="width: 18rem;">
+				<img src="..." class="card-img-top" alt="...">
+				<div class="card-body">
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</div>
+			<div class="card mx-3" style="width: 18rem;">
+				<img src="..." class="card-img-top" alt="...">
+				<div class="card-body">
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 {% endblock %}

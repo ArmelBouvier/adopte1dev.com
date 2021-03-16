@@ -31,6 +31,10 @@ TOOLS
     color: #EC1F7D;
 }
 
+.text-gray{
+    color: #647585;
+}
+
 .bg-violet{
     background-color: #28007B;
 }
@@ -47,9 +51,17 @@ TOOLS
     background-color: #EC1F7D;
 }
 
+.bg-gray{
+    background-color: #647585;
+}
+
 .pacifico {
     font-family: Pacifico;
     font-weight: 400;
+}
+
+.custom-shadow{
+    text-shadow: 2px 2px 5px gray;
 }
 
 
@@ -83,4 +95,19 @@ footer a {
     width: 30px;
     text-align: center;
     font-size: 20px;
+}
+
+/*
+LANDING PAGE
+*/
+
+.landing-banner{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../../public/images/banner.jpg');
+}
+
+.job-offer:hover{
+    box-shadow: 10px 5px 5px gray;
 }
