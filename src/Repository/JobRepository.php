@@ -26,4 +26,14 @@ class JobRepository extends ServiceEntityRepository
 
         return $queryBuilder->getQuery()->getOneOrNullResult();
     }
+
+    public function findForHomepage()
+    {
+        return $this->createQueryBuilder('m')
+            ->setMaxResults(3)
+            ->orderBy('m.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

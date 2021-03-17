@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Job;
+use App\Entity\News;
 use App\Entity\User;
 use App\Entity\Stack;
 use App\Entity\Benefit;
@@ -32,6 +33,9 @@ class DashboardController extends AbstractDashboardController
     protected $userRepository;
     protected $companyRepository;
     protected $jobRepository;
+    protected $trainingRepository;
+    protected $coworkingRepository;
+    protected $packageRepository;
 
     public function __construct(
         UserRepository $userRepository,
@@ -77,6 +81,9 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Accès');
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-users', User::class);
+
+        yield MenuItem::section('Actuces');
+        yield MenuItem::linkToCrud('News', 'fa fa-news', News::class);
 
         yield MenuItem::section('Entreprises');
         yield MenuItem::linkToCrud('Entreprises', 'fa fa-building', Company::class);

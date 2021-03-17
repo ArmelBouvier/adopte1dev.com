@@ -2,20 +2,32 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\JobRepository;
+use App\Repository\NewsRepository;
+use App\Repository\CompanyRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MainController extends AbstractController
 {
     /**
      * @Route("/", name="browse")
      */
-    public function browse(): Response
+    public function browse(
+        JobRepository $jobRepository,
+        CompanyRepository $companyRepository,
+        NewsRepository $newsRepository
+    ): Response
     {
-        return $this->render('main/browse.html.twig');
+        return $this->render('main/browse.html.twig', [
+            'countAllJobs' => $jobRepository->countAllJobs(),
+            'jobs' => $jobRepository->findForHomepage(),
+            'countAllCompanies' => $companyRepository->countAllCompanies(),
+            'news' => $newsRepository->findForHomepage(),
+        ]);
     }
 
     /**

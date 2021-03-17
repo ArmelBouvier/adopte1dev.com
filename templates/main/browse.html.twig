@@ -14,37 +14,36 @@
 	</div>
 
 	<div class="row mb-5">
-		<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-			<div class="carousel-indicators">
-				<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-				<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-				<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-			</div>
-			<div class="carousel-inner">
-				<div class="carousel-item active" data-bs-interval="10000">
-					<img src="{{ asset('images/news/job-1.jpg') }}" class="d-block w-100" alt="...">
-					<div class="carousel-caption d-none d-md-block bg-light rounded">
-						<h5>Titre accrocheur</h5>
-						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio amet consectetur provident dolorem eaque tenetur omnis itaque illo beatae id ratione tempora fuga, maxime delectus, praesentium, neque quo laudantium fugiat!</p>
-						<a href="#" class="btn btn-outline-dark rounded-pill">Voir plus</a>
+		<div id="carouselExampleDark" class="carousel carousel-dark slide my-5 p-5" data-bs-ride="carousel">
+			<div class="carousel-inner container">
+				<div class="carousel-item active">
+					<div class="row">
+						<div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+							<h4 class="py-3">{% trans %}Nos dernières actualités{% endtrans %}</h4>
+							<p class="pb-3">{% trans %}
+							Ici on vous présente toutes les petites infos sympa qu'on a pu dénicher :)
+							{% endtrans %}</p>
+						</div>
+						<div class="col-md-6 d-flex justify-content-center align-items-center">
+							<img class="rounded shadow border-light w-100" src="{{ asset('images/news/job-2.jpg') }}" alt="actus">
+						</div>
 					</div>
 				</div>
-				<div class="carousel-item" data-bs-interval="2000">
-					<img src="{{ asset('images/news/job-2.jpg') }}" class="d-block w-100" alt="...">
-					<div class="carousel-caption d-none d-md-block bg-light rounded">
-						<h5>Titre accrocheur</h5>
-						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio amet consectetur provident dolorem eaque tenetur omnis itaque illo beatae id ratione tempora fuga, maxime delectus, praesentium, neque quo laudantium fugiat!</p>
-						<a href="#" class="btn btn-outline-dark rounded-pill">Voir plus</a>
+			{% for new in news | sort((a, b) => a.title|lower <=> b.title|lower)%}
+				<div class="carousel-item ">
+					<div class="row">
+						<div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+							<h4 class="py-3">{{new.title}}</h4>
+							<p class="pb-3 text-secondary">{% trans %}Rédigée le :{% endtrans %} {{ new.createdAt|date('d M Y') }}</p>
+							<p class="pb-3">{{new.content|raw}}</p>
+							<a class="btn btn-secondary rounded-pill" href="{{ path('news_read', { id : new.id }) }}">{% trans %}Voir plus...{% endtrans %}</a>
+						</div>
+						<div class="col-md-6 d-flex justify-content-center align-items-center">
+							<img class="rounded shadow border-light w-100" src="{{ asset('images/news/job-2.jpg') }}" alt="{{new.title}}">
+						</div>
 					</div>
 				</div>
-				<div class="carousel-item">
-					<img src="{{ asset('images/news/job-3.jpg') }}" class="d-block w-100" alt="...">
-					<div class="carousel-caption d-none d-md-block bg-light rounded">
-						<h5>Titre accrocheur</h5>
-						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio amet consectetur provident dolorem eaque tenetur omnis itaque illo beatae id ratione tempora fuga, maxime delectus, praesentium, neque quo laudantium fugiat!</p>
-						<a href="#" class="btn btn-outline-dark rounded-pill">Voir plus</a>
-					</div>
-				</div>
+			{% endfor %}
 			</div>
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -79,6 +78,9 @@
 		<div class="col-12 text-center">
 			<h2 class="mb-5 text-violet display-3 custom-shadow">{% trans %}Les Dernières Offres{% endtrans %}</h2>
 			<div class="container">
+			
+			{% for job in jobs | sort((a, b) => a.title|lower <=> b.title|lower)%}
+			<a class="text-decoration-none text-dark" href="#">
 				<div class="row border mt-3 p-3 job-offer">
 					<div class="col-md-2 d-flex justify-content-center align-items-center">
 						<span class="rounded-circle p-2 text-white bg-darkBlue">_X_</span>
@@ -86,80 +88,30 @@
 					<div class="col-md-10">
 						<div class="row">
 							<div class="col-md-8">
-								<h4 class="text-start">Intitulé du poste</h4>
+								<h4 class="text-start">{{job.title}}</h4>
 							</div>
 							<div class="col-md-4 text-end">
-								<span class="rounded-pill border">Salaire</span>
-								<span class="rounded-pill border">Remote</span>
+								<span class="rounded-pill border">{{job.salary}}</span>
+								{% for remote in job.remote %}
+								<span class="rounded-pill border">{{remote}}</span>
+								{% endfor %}
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-2">Nom de l'entreprise</div>
+							<div class="col-md-2">{{job.company}}</div>
 							<div class="col-md-8">
-								<span class="rounded-pill border">Expérience</span>
-								<span class="rounded-pill border">Contrat</span>
-								<span class="rounded alert-info border">Tag</span>
-								<span class="rounded alert-info border">Tag</span>
-								<span class="rounded alert-info border">Tag</span>
+								<span class="rounded-pill border">{{job.seniority}}</span>
+								<span class="rounded-pill border">{{job.contract}}</span>
+								{% for technology in job.technologies %}
+								<span class="rounded alert-info border">{{technology}}</span>
+								{% endfor %}
 							</div>
-							<div class="col-md-2">Date de publication</div>
+							<div class="col-md-2">{{job.createdAt|date('d M Y')}}</div>
 						</div>
 					</div>
 				</div>
-				<div class="row border mt-3 p-3 job-offer">
-					<div class="col-md-2 d-flex justify-content-center align-items-center">
-						<span class="rounded-circle p-2 text-white bg-darkBlue">_X_</span>
-					</div>
-					<div class="col-md-10">
-						<div class="row">
-							<div class="col-md-8">
-								<h4 class="text-start">Intitulé du poste</h4>
-							</div>
-							<div class="col-md-4 text-end">
-								<span class="rounded-pill border">Salaire</span>
-								<span class="rounded-pill border">Remote</span>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-2">Nom de l'entreprise</div>
-							<div class="col-md-8">
-								<span class="rounded-pill border">Expérience</span>
-								<span class="rounded-pill border">Contrat</span>
-								<span class="rounded alert-info border">Tag</span>
-								<span class="rounded alert-info border">Tag</span>
-								<span class="rounded alert-info border">Tag</span>
-							</div>
-							<div class="col-md-2">Date de publication</div>
-						</div>
-					</div>
-				</div>
-				<div class="row border mt-3 p-3 job-offer">
-					<div class="col-md-2 d-flex justify-content-center align-items-center">
-						<span class="rounded-circle p-2 text-white bg-darkBlue">_X_</span>
-					</div>
-					<div class="col-md-10">
-						<div class="row">
-							<div class="col-md-8">
-								<h4 class="text-start">Intitulé du poste</h4>
-							</div>
-							<div class="col-md-4 text-end">
-								<span class="rounded-pill border">Salaire</span>
-								<span class="rounded-pill border">Remote</span>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-2">Nom de l'entreprise</div>
-							<div class="col-md-8">
-								<span class="rounded-pill border">Expérience</span>
-								<span class="rounded-pill border">Contrat</span>
-								<span class="rounded alert-info border">Tag</span>
-								<span class="rounded alert-info border">Tag</span>
-								<span class="rounded alert-info border">Tag</span>
-							</div>
-							<div class="col-md-2">Date de publication</div>
-						</div>
-					</div>
-				</div>
+			</a>				
+			{% endfor %}	
 			</div>
 		</div>
 	</div>
@@ -169,11 +121,11 @@
 	</div>
 	<div class="row mb-5">
 		<div class="col-md-6 p-5 text-end border-end">
-			<h5>95</h5>
+			<h5>{{countAllJobs['value']}}</h5>
 			<p>{% trans %}Emplois publiés{% endtrans %}</p>
 		</div>
 		<div class="col-md-6 p-5 border-start">
-			<h5>55</h5>
+			<h5>{{countAllCompanies['value']}}</h5>
 			<p>{% trans %}Entreprises{% endtrans %}</p>
 		</div>
 	</div>
