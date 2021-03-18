@@ -10,11 +10,13 @@ use App\Entity\Benefit;
 use App\Entity\Company;
 use App\Entity\Feature;
 use App\Entity\Package;
+use App\Entity\Partner;
 use App\Entity\Position;
 use App\Entity\Training;
 use App\Entity\Coworking;
 use App\Entity\Technology;
 use App\Entity\SocialMedia;
+use App\Entity\Testimonial;
 use App\Entity\CompanyKeywords;
 use App\Repository\JobRepository;
 use App\Repository\UserRepository;
@@ -82,8 +84,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Accès');
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-users', User::class);
 
-        yield MenuItem::section('Actuces');
-        yield MenuItem::linkToCrud('News', 'fa fa-news', News::class);
+        yield MenuItem::section('Homepage');
+        yield MenuItem::linkToCrud('News', 'fa fa-newspaper', News::class);
+        yield MenuItem::linkToCrud('Témoignages', 'fa fa-comment', Testimonial::class);
+        yield MenuItem::linkToCrud('Partenaires', 'fa fa-handshake', Partner::class);
 
         yield MenuItem::section('Entreprises');
         yield MenuItem::linkToCrud('Entreprises', 'fa fa-building', Company::class);

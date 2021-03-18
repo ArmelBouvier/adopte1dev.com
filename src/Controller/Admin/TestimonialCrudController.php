@@ -2,40 +2,41 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\News;
+use App\Entity\Testimonial;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
-class NewsCrudController extends AbstractCrudController
+class TestimonialCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return News::class;
+        return Testimonial::class;
     }
 
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setPageTitle(Crud::PAGE_INDEX, 'Liste des actualités')
-            ->setEntityLabelInSingular('News')
-            ->setEntityLabelInPlural('News')
+            ->setPageTitle(Crud::PAGE_INDEX, 'Liste des témoignages')
+            ->setEntityLabelInSingular('Témoignage')
+            ->setEntityLabelInPlural('Témoignages')
         ;
     }
+
 
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')->onlyOnIndex(),
-            TextField::new('title')->setLabel('Titre'),
-            TextEditorField::new('content')->setLabel('Contenu'),
-            UrlField::new('url')->setLabel('Adresse URL'),
-            DateTimeField::new ('created_at')->setLabel('Créée le :'),
+            TextField::new('author')->setLabel('Auteur'),
+            TextField::new('position')->setLabel('Qualité'),
+            TextEditorField::new('message')->setLabel('Texte'),
+            TextField::new('logo')->setLabel('Logo entreprise'),
         ];
     }
-
 }

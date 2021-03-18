@@ -21,29 +21,30 @@
 						<div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
 							<h4 class="py-3">{% trans %}Nos dernières actualités{% endtrans %}</h4>
 							<p class="pb-3">{% trans %}
-							Ici on vous présente toutes les petites infos sympa qu'on a pu dénicher :)
-							{% endtrans %}</p>
+								Ici on vous présente toutes les petites infos sympa qu'on a pu dénicher :)
+								{% endtrans %}</p>
 						</div>
 						<div class="col-md-6 d-flex justify-content-center align-items-center">
 							<img class="rounded shadow border-light w-100" src="{{ asset('images/news/job-2.jpg') }}" alt="actus">
 						</div>
 					</div>
 				</div>
-			{% for new in news | sort((a, b) => a.title|lower <=> b.title|lower)%}
-				<div class="carousel-item ">
-					<div class="row">
-						<div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
-							<h4 class="py-3">{{new.title}}</h4>
-							<p class="pb-3 text-secondary">{% trans %}Rédigée le :{% endtrans %} {{ new.createdAt|date('d M Y') }}</p>
-							<p class="pb-3">{{new.content|raw}}</p>
-							<a class="btn btn-secondary rounded-pill" href="{{ path('news_read', { id : new.id }) }}">{% trans %}Voir plus...{% endtrans %}</a>
-						</div>
-						<div class="col-md-6 d-flex justify-content-center align-items-center">
-							<img class="rounded shadow border-light w-100" src="{{ asset('images/news/job-2.jpg') }}" alt="{{new.title}}">
+				{% for new in news | sort((a, b) => a.title|lower <=> b.title|lower)%}
+					<div class="carousel-item ">
+						<div class="row">
+							<div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+								<h4 class="py-3">{{new.title}}</h4>
+								<p class="pb-3 text-secondary">{% trans %}Rédigée le :{% endtrans %}
+									{{ new.createdAt|date('d M Y') }}</p>
+								<p class="pb-3">{{new.content|raw}}</p>
+								<a class="btn btn-secondary rounded-pill" rel="noreferrer" target="_blank" href="{{new.url}}">{% trans %}Voir plus...{% endtrans %}</a>
+							</div>
+							<div class="col-md-6 d-flex justify-content-center align-items-center">
+								<img class="rounded shadow border-light w-100" src="{{ asset('images/news/job-2.jpg') }}" alt="{{new.title}}">
+							</div>
 						</div>
 					</div>
-				</div>
-			{% endfor %}
+				{% endfor %}
 			</div>
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -78,40 +79,40 @@
 		<div class="col-12 text-center">
 			<h2 class="mb-5 text-violet display-3 custom-shadow">{% trans %}Les Dernières Offres{% endtrans %}</h2>
 			<div class="container">
-			
-			{% for job in jobs | sort((a, b) => a.title|lower <=> b.title|lower)%}
-			<a class="text-decoration-none text-dark" href="#">
-				<div class="row border mt-3 p-3 job-offer">
-					<div class="col-md-2 d-flex justify-content-center align-items-center">
-						<span class="rounded-circle p-2 text-white bg-darkBlue">_X_</span>
-					</div>
-					<div class="col-md-10">
-						<div class="row">
-							<div class="col-md-8">
-								<h4 class="text-start">{{job.title}}</h4>
+
+				{% for job in jobs | sort((a, b) => a.title|lower <=> b.title|lower)%}
+					<a class="text-decoration-none text-dark" href="#">
+						<div class="row border mt-3 p-3 job-offer">
+							<div class="col-md-2 d-flex justify-content-center align-items-center">
+								<span class="rounded-circle p-2 text-white bg-darkBlue">_X_</span>
 							</div>
-							<div class="col-md-4 text-end">
-								<span class="rounded-pill border">{{job.salary}}</span>
-								{% for remote in job.remote %}
-								<span class="rounded-pill border">{{remote}}</span>
-								{% endfor %}
+							<div class="col-md-10">
+								<div class="row">
+									<div class="col-md-8">
+										<h4 class="text-start">{{job.title}}</h4>
+									</div>
+									<div class="col-md-4 text-end">
+										<span class="rounded-pill border">{{job.salary}}</span>
+										{% for remote in job.remote %}
+											<span class="rounded-pill border">{{remote}}</span>
+										{% endfor %}
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-2">{{job.company}}</div>
+									<div class="col-md-8">
+										<span class="rounded-pill border">{{job.seniority}}</span>
+										<span class="rounded-pill border">{{job.contract}}</span>
+										{% for technology in job.technologies %}
+											<span class="rounded alert-info border">{{technology}}</span>
+										{% endfor %}
+									</div>
+									<div class="col-md-2">{{job.createdAt|date('d M Y')}}</div>
+								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-2">{{job.company}}</div>
-							<div class="col-md-8">
-								<span class="rounded-pill border">{{job.seniority}}</span>
-								<span class="rounded-pill border">{{job.contract}}</span>
-								{% for technology in job.technologies %}
-								<span class="rounded alert-info border">{{technology}}</span>
-								{% endfor %}
-							</div>
-							<div class="col-md-2">{{job.createdAt|date('d M Y')}}</div>
-						</div>
-					</div>
-				</div>
-			</a>				
-			{% endfor %}	
+					</a>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
@@ -121,11 +122,11 @@
 	</div>
 	<div class="row mb-5">
 		<div class="col-md-6 p-5 text-end border-end">
-			<h5>{{countAllJobs['value']}}</h5>
+			<h5 class="display-2">{{countAllJobs['value']}}</h5>
 			<p>{% trans %}Emplois publiés{% endtrans %}</p>
 		</div>
 		<div class="col-md-6 p-5 border-start">
-			<h5>{{countAllCompanies['value']}}</h5>
+			<h5 class="display-2">{{countAllCompanies['value']}}</h5>
 			<p>{% trans %}Entreprises{% endtrans %}</p>
 		</div>
 	</div>
@@ -134,47 +135,46 @@
 
 	<div id="carouselExampleSlidesOnly" class="carousel slide my-5" data-bs-ride="carousel">
 		<div class="carousel-inner text-white bg-dark p-5">
-			<h2 class="text-center custom-shadow">{% trans %}Ils nous ont fait confiance{% endtrans %}</h2>
+			<h2 class="mb-5 text-center custom-shadow">{% trans %}Ils nous ont fait confiance :{% endtrans %}</h2>
 			<div class="carousel-item active">
+				<div class="row">
+					<div class="col-md-6 d-flex justify-content-center align-items-center">
+						<img class="rounded-pill shadow border-light w-50" src="{{ asset('images/testimonials/testim_default.png') }}" alt="logo">
+					</div>
+					<div class="col-md-6">
+						<div class="display-1 pacifico">"</div>
+						<p>Vous trouverez dans cette section l'avis des entreprises qui ont collaboré avec nous. Peut-être trouverez-vous bientôt ici votre avis ! 😘</p>
+						<div class="display-1 text-end pacifico">"</div>
+						<h3>Gilles Bouvier</h3>
+						<h5 class="fs-bold text-uppercase">Diffuseur d'amour depuis 1990
+							<span class="text-pink">
+								<i class="fa fa-heart"></i>
+							</span>
+						</h5>
+					</div>
+				</div>
+			</div>
+			{% for testimonial in testimonials | sort((a, b) => a.author|lower <=> b.author|lower)%}
+				<div class="carousel-item">
+					<div class="row">
+						<div class="col-md-6 d-flex justify-content-center align-items-center">
+							{% if testimonial.logo %}
+								<img class="rounded-pill shadow border-light" src="{{testimonial.logo}}" alt="logo">
+							{% else %}
+								<img class="rounded-pill shadow border-light w-50" src="{{ asset('images/testimonials/testim_default.png') }}" alt="logo">
+							{% endif %}
 
-				<div class="row">
-					<div class="col-md-6 d-flex justify-content-center align-items-center">
-						<img class="rounded-pill shadow border-light" src="{{ asset('images/testimonials/chiron-it.png') }}" alt="">
-					</div>
-					<div class="col-md-6">
-						<div class="display-1">"</div>
-						<p>Merci pour tout ! Nous attendons une validation avec un candidat que nous avons rencontrés grâce à votre diffusion de notre annonce. Je vous remercie et ne manquerai pas de renouveler l’opération avec vous pour de nouvelles périodes de recrutement.</p>
-						<h3>Auteur</h3>
-						<h5 class="fs-bold">QUALITE</h5>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-item">
-				<div class="row">
-					<div class="col-md-6 d-flex justify-content-center align-items-center">
-						<img class="rounded-pill shadow border-light" src="{{ asset('images/testimonials/chiron-it.png') }}" alt="">
-					</div>
-					<div class="col-md-6">
-						<div class="display-1">"</div>
-						<p>Merci pour tout ! Nous attendons une validation avec un candidat que nous avons rencontrés grâce à votre diffusion de notre annonce. Je vous remercie et ne manquerai pas de renouveler l’opération avec vous pour de nouvelles périodes de recrutement.</p>
-						<h3>Auteur</h3>
-						<h5 class="fs-bold">QUALITE</h5>
+						</div>
+						<div class="col-md-6">
+							<div class="display-1 pacifico">"</div>
+							<p>{{testimonial.message|raw}}</p>
+							<div class="display-1 text-end pacifico">"</div>
+							<h3>{{testimonial.author}}</h3>
+							<h5 class="fs-bold">{{testimonial.position|upper}}</h5>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="carousel-item">
-				<div class="row">
-					<div class="col-md-6 d-flex justify-content-center align-items-center">
-						<img class="rounded-pill shadow border-light" src="{{ asset('images/testimonials/chiron-it.png') }}" alt="">
-					</div>
-					<div class="col-md-6">
-						<div class="display-1">"</div>
-						<p>Merci pour tout ! Nous attendons une validation avec un candidat que nous avons rencontrés grâce à votre diffusion de notre annonce. Je vous remercie et ne manquerai pas de renouveler l’opération avec vous pour de nouvelles périodes de recrutement.</p>
-						<h3>Auteur</h3>
-						<h5 class="fs-bold">QUALITE</h5>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
 
@@ -185,25 +185,15 @@
 				<h2 class="text-violet display-3 custom-shadow">{% trans %}On leur a fait confiance{% endtrans %}</h2>
 			</div>
 		</div>
-		<div class="row">
-			<div class="card mx-3" style="width: 18rem;">
-				<img src="..." class="card-img-top" alt="...">
-				<div class="card-body">
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		<div class="row  py-3 justify-content-around align-items-center">
+			{% for partner in partners | sort((a, b) => a.name|lower <=> b.name|lower)%}
+				<div class="card mb-3" style="width: 18rem; height: 20rem;">
+					<img class="card-img-top" src="images/partners/{{partner.logo}}" alt="logo {{partner.name}}">
+					<div class="card-body d-flex justify-content-center align-items-end">
+						<a target="_blank" rel="noreferrer" href="{{partner.url}}" class="h3 text-decoration-none text-violet text-center">{{partner.name}}</a>
+					</div>
 				</div>
-			</div>
-			<div class="card mx-3" style="width: 18rem;">
-				<img src="..." class="card-img-top" alt="...">
-				<div class="card-body">
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				</div>
-			</div>
-			<div class="card mx-3" style="width: 18rem;">
-				<img src="..." class="card-img-top" alt="...">
-				<div class="card-body">
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
 

@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Repository\JobRepository;
 use App\Repository\NewsRepository;
 use App\Repository\CompanyRepository;
+use App\Repository\PartnerRepository;
+use App\Repository\TestimonialRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +21,9 @@ class MainController extends AbstractController
     public function browse(
         JobRepository $jobRepository,
         CompanyRepository $companyRepository,
-        NewsRepository $newsRepository
+        NewsRepository $newsRepository,
+        TestimonialRepository $testimonialRepository,
+        PartnerRepository $partnerRepository
     ): Response
     {
         return $this->render('main/browse.html.twig', [
@@ -27,6 +31,8 @@ class MainController extends AbstractController
             'jobs' => $jobRepository->findForHomepage(),
             'countAllCompanies' => $companyRepository->countAllCompanies(),
             'news' => $newsRepository->findForHomepage(),
+            'testimonials' => $testimonialRepository->findAll(),
+            'partners' => $partnerRepository->findAll()
         ]);
     }
 
