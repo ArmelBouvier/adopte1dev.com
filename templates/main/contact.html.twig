@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	|| Contact
+{% endblock %}
+
+{% block body %}
+
+	<hr class="text-violet mt-5">
+
+	<section class="row py-5">
+		<div class="col-12 text-center">
+			<h2 class="text-violet display-3 custom-shadow pacifico">{% trans %}Contact{% endtrans %}</h2>
+		</div>
+	</section>
+
+	<section class="row py-5">
+		<div class="col-12 text-center">
+			<img class="w-25 rounded-circle mb-5 shadow" src="{{ asset('images/contact/mail.png') }}" alt="mail">
+			<p>{% trans %}Une requête ? Une plainte ? Un mot doux ?{% endtrans %}
+				💜</p>
+			<p>{% trans %}Nous pouvons tout entendre et nous vous répondons dans les 48 heures maximum. Promis.{% endtrans %}</p>
+		</div>
+	</section>
+
+	<section class="container py-5">
+		<div class="row">
+			<div class="col-md-8">
+				<h3 class="text-center">C'est ici !</h3>
+				<form class="d-flex flex-column justify-content-center align-items-center bg-lightPink shadow py-2 rounded">
+					<div class="mb-3 w-50">
+						<label for="name" class="form-label">{% trans %}Nom{% endtrans %}</label>
+						<input type="text" class="form-control" placeholder="{% trans %}Votre petit nom{% endtrans %}" id="name" name="name" required>
+					</div>
+					<div class="mb-3 w-50">
+						<label for="email" class="form-label">{% trans %}Adresse mail{% endtrans %}</label>
+						<input type="email" class="form-control" placeholder="{% trans %}Votre email{% endtrans %}" id="email" name="email" required>
+						<div id="emailHelp" class="form-text">{% trans %}Nous ne partagerons jamais votre adresse avec qui que ce soit d'autre.{% endtrans %}</div>
+					</div>
+					<div class="mb-3 w-50">
+						<label for="subject" class="form-label">{% trans %}Objet{% endtrans %}</label>
+						<input type="text" class="form-control" placeholder="{% trans %}Quid{% endtrans %} ?" id="subject" name="subject" required>
+					</div>
+					<div class="mb-3 w-50">
+						<div class="form-floating">
+							<textarea class="form-control" placeholder="{% trans %}Votre déclaration d'amour{% endtrans %}" id="message" name="message" required></textarea>
+							<label for="message">{% trans %}Message{% endtrans %}</label>
+						</div>
+					</div>
+					<button type="submit" class="bg-violet rounded-pill text-white fw-bold">{% trans %}Envoyer{% endtrans %}</button>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<div class="row justify-content-center pb-5">
+					<h3 class="text-center">Ou là !</h3>
+					<div class="flex-column contact d-flex justify-content-center align-items-center bg-lightPink rounded-circle shadow">
+						<div class="p-2">
+							<a class="fs-2 bg-darkBlue me-2 rounded d-inline-block text-lightPink contact-socials" rel="noreferrer" target="_blank" href="https://twitter.com/Adopte1Dev">
+								<i class="fa fa-twitter"></i>
+							</a>
+							<a class="fs-2 bg-darkBlue me-2 rounded d-inline-block text-lightPink contact-socials" rel="noreferrer" target="_blank" href="https://www.instagram.com/adopte1dev/">
+								<i class="fa fa-instagram"></i>
+							</a>
+						</div>
+						<div class="p-2">
+							<a class="fs-2 bg-darkBlue me-2 rounded d-inline-block text-lightPink contact-socials" rel="noreferrer" target="_blank" href="https://www.linkedin.com/company/adopteundev/">
+								<i class="fa fa-linkedin"></i>
+							</a>
+							<a class="fs-2 bg-darkBlue me-2 rounded d-inline-block text-lightPink contact-socials" rel="noreferrer" target="_blank" href="https://www.facebook.com/adopte1dev">
+								<i class="fa fa-facebook"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<h3 class="text-center">Ou encore ici !</h3>
+					<a class="text-center d-flex justify-content-center align-items-center text-decoration-none" href="">
+						<div class="fs-2 bg-lightPink shadow text-darkBlue rounded-circle mailto d-flex justify-content-center align-items-center">
+
+							<i class="fa fa-envelope"></i>
+
+						</div>
+					</a>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

@@ -47,4 +47,20 @@ class MainController extends AbstractController
         // On revient sur la page précédente
         return $this->redirect($request->headers->get('referer'));
     }
+
+    /**
+     * @Route("/about", name="main_about")
+     */
+    public function about(): Response
+    {
+        return $this->render('main/about.html.twig');
+    }
+
+    /**
+     * @Route("/contact", name="main_contact")
+     */
+    public function contact(): Response
+    {
+        return $this->render('main/contact.html.twig');
+    }
 }

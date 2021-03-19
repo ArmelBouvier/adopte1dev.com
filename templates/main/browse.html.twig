@@ -4,7 +4,7 @@
 
 {% block body %}
 
-	<hr>
+	<hr class="text-violet mt-5">
 
 	<div class="row py-5">
 		<div class="col-12 text-center">
@@ -194,6 +194,11 @@
 					</div>
 				</div>
 			{% endfor %}
+		</div>
+		<div class="row justify-content-end">
+			<div class="col-2">
+				<a title="back to top" class="btn rounded-circle btn-secondary text-center text-white" href="{{path('browse')}}"><i class="fa fa-arrow-up"></i></a>
+			</div>
 		</div>
 	</div>
 

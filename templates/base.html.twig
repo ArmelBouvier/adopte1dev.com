@@ -49,10 +49,10 @@
 								<a class="nav-link" href="#">{% trans %}Nos packs{% endtrans %}</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">{% trans %}A propos{% endtrans %}</a>
+								<a class="nav-link" href="{{path('main_about')}}">{% trans %}A propos{% endtrans %}</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">{% trans %}Contact{% endtrans %}</a>
+								<a class="nav-link" href="{{path('main_contact')}}">{% trans %}Contact{% endtrans %}</a>
 							</li>
 						</ul>
 						<form class="d-flex" action="">
@@ -82,13 +82,13 @@
 				<div class="col-md-3">
 					<h3 class="pacifico text-white">{% trans %}Plan du Site{% endtrans %}</h3>
 					<ul class="list-unstyled">
-						<li><a href="">{% trans %}Accueil{% endtrans %}</a></li>
+						<li><a href="{{path('browse')}}">{% trans %}Accueil{% endtrans %}</a></li>
 						<li><a href="">{% trans %}Jobs{% endtrans %}</a></li>
 						<li><a href="">{% trans %}Entreprises{% endtrans %}</a></li>
 						<li><a href="">{% trans %}Ressources{% endtrans %}</a></li>
 						<li><a href="">{% trans %}Nos Packs{% endtrans %}</a></li>
-						<li><a href="">{% trans %}A propos{% endtrans %}</a></li>
-						<li><a href="">{% trans %}Contact{% endtrans %}</a></li>
+						<li><a href="{{path('main_about')}}">{% trans %}A propos{% endtrans %}</a></li>
+						<li><a href="{{path('main_contact')}}">{% trans %}Contact{% endtrans %}</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3">
