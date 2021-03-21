@@ -1,7 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} || A propos{% endblock %}
+{% block title %}
+	{{ parent() }}
+	|| A propos
+{% endblock %}
 
 {% block body %}
+
+	<hr class="text-violet mt-5">
+
+	<section class="row py-5">
+		<div class="col-12 text-center">
+			<h1 class="text-violet display-3 custom-shadow pacifico">{% trans %}A Propos{% endtrans %}</h1>
+		</div>
+	</section>
+
+	<section class="container mb-5">
+		<div class="row justify-content-center about-banner-background py-5 shadow">
+			<div class="w-50">
+				<h2 class="display-4 mb-5 text-white text-center">Adopte1dev ?</h2>
+				<p class=" text-white p-5 about-banner-text shadow">
+					{% trans %}
+					A l’instar d’un site de rencontre, l’idée est, d’un côté, de proposer du contenu pertinent 
+															                                                    aux professionnels du web (spécialement des jobs) et, d’un autre côté, aux recruteurs la 			
+															                                                    possibilité de publier leurs annonces d’emploi, de bénéficier d’une visibilité au sein d’un
+															                                                    réseau de développeurs francophones très vaste.
+					{% endtrans %}
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="container mb-5">
+		<div class="row py-5">
+			<div class="col-12 text-center">
+				<h2 class="text-violet display-3 custom-shadow">{% trans %}Nos Valeurs{% endtrans %}</h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<a href="#" class="card-link">Card link</a>
+					<a href="#" class="card-link">Another link</a>
+				</div>
+			</div>
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<a href="#" class="card-link">Card link</a>
+					<a href="#" class="card-link">Another link</a>
+				</div>
+			</div>
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<a href="#" class="card-link">Card link</a>
+					<a href="#" class="card-link">Another link</a>
+				</div>
+			</div>
+		</div>
+	</section>
 
 {% endblock %}
