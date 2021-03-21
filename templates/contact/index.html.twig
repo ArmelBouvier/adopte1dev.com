@@ -28,28 +28,21 @@
 		<div class="row">
 			<div class="col-md-8">
 				<h3 class="text-center">C'est ici !</h3>
-				<form class="d-flex flex-column justify-content-center align-items-center bg-lightPink shadow py-2 rounded">
+                {{ form_start(our_form, {'attr': {'class': 'd-flex flex-column justify-content-center align-items-center bg-lightPink shadow py-2 rounded'}}) }}
 					<div class="mb-3 w-50">
-						<label for="name" class="form-label">{% trans %}Nom{% endtrans %}</label>
-						<input type="text" class="form-control" placeholder="{% trans %}Votre petit nom{% endtrans %}" id="name" name="name" required>
-					</div>
-					<div class="mb-3 w-50">
-						<label for="email" class="form-label">{% trans %}Adresse mail{% endtrans %}</label>
-						<input type="email" class="form-control" placeholder="{% trans %}Votre email{% endtrans %}" id="email" name="email" required>
-						<div id="emailHelp" class="form-text">{% trans %}Nous ne partagerons jamais votre adresse avec qui que ce soit d'autre.{% endtrans %}</div>
-					</div>
-					<div class="mb-3 w-50">
-						<label for="subject" class="form-label">{% trans %}Objet{% endtrans %}</label>
-						<input type="text" class="form-control" placeholder="{% trans %}Quid{% endtrans %} ?" id="subject" name="subject" required>
-					</div>
-					<div class="mb-3 w-50">
-						<div class="form-floating">
-							<textarea class="form-control" placeholder="{% trans %}Votre déclaration d'amour{% endtrans %}" id="message" name="message" required></textarea>
-							<label for="message">{% trans %}Message{% endtrans %}</label>
+                        {{ form_row(our_form.name, {'attr': {'class': 'form-control', 'placeholder': 'Votre petit nom'}}) }}
 						</div>
+					<div class="mb-3 w-50">
+                        {{ form_row(our_form.email, {'attr': {'class': 'form-control', 'placeholder': 'Votre email ;)'}}) }}
+                    </div>
+					<div class="mb-3 w-50">
+                        {{ form_row(our_form.subject, {'attr': {'class': 'form-control', 'placeholder': 'Quid ?'}}) }}
+                    </div>
+					<div class="mb-3 w-50">
+						{{ form_row(our_form.message, {'attr': {'class': 'form-control', 'placeholder': 'Votre déclaration d\'amour'}}) }}
 					</div>
-					<button type="submit" class="bg-violet rounded-pill text-white fw-bold">{% trans %}Envoyer{% endtrans %}</button>
-				</form>
+					<input type="submit" value="Envoyer" class="bg-violet rounded-pill text-white fw-bold">
+                {{ form_end(our_form) }}
 			</div>
 			<div class="col-md-4">
 				<div class="row justify-content-center pb-5">
